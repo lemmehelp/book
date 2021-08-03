@@ -1,7 +1,4 @@
 # Summary
 
 - [第一章](./chapter_1.md)
-- * [new](./new.md)
-- 
-- 
-
+- [new](./new.md)
