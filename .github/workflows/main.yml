@@ -1,0 +1,7 @@
+- name: mdBook Action
+  # You may pin to the exact commit or the version.
+  # uses: peaceiris/actions-mdbook@96256d8b33fe0eeb44d121ed7de97cb4cb61bc33
+  uses: peaceiris/actions-mdbook@v1.1.13
+  with:
+    # The mdBook version to download (if necessary) and use. Example: 0.3.5
+    mdbook-version: 0.4.11
