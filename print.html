@@ -827,7 +827,7 @@ int main()
 <li>extern</li>
 <li>mutable</li>
 </ul>
-<h4 id="auto-存储类"><a class="header" href="#auto-存储类">auto 存储类</a></h4>
+<h4 id="1auto-存储类"><a class="header" href="#1auto-存储类">1、auto 存储类</a></h4>
 <p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
 <pre><code class="language-c++">{
    int mount;
@@ -850,7 +850,7 @@ int main()
 <p><strong>static</strong> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。<strong>因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。</strong></p>
 <p>static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。<strong>全局变量默认就是static类型。</strong></p>
 <p>在 C++ 中，当 static 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
-<h4 id="4extern储存类相当于定义一个可以多个文件共享的变量"><a class="header" href="#4extern储存类相当于定义一个可以多个文件共享的变量">4.extern储存类（相当于定义一个可以多个文件共享的变量）</a></h4>
+<h4 id="4extern储存类相当于定义一个可以多个文件共享的变量"><a class="header" href="#4extern储存类相当于定义一个可以多个文件共享的变量">4、extern储存类（相当于定义一个可以多个文件共享的变量）</a></h4>
 <p><strong>extern</strong> 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当您使用 'extern' 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
 <p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
 <p>extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
@@ -1119,7 +1119,7 @@ int main ()
    return 0;
 }
 </code></pre>
-<h5 id="5嵌套的循环"><a class="header" href="#5嵌套的循环">5、嵌套的循环</a></h5>
+<h5 id="4嵌套的循环"><a class="header" href="#4嵌套的循环">4、嵌套的循环</a></h5>
 <p>一个循环内可以嵌套另一个循环。C++ 允许至少 256 个嵌套层次。</p>
 <p>C++ 中 <strong>嵌套 for 循环</strong> 语句的语法：</p>
 <pre><code class="language-C++">for ( init; condition; increment )
@@ -1153,7 +1153,7 @@ int main ()
 }while( condition );
 </code></pre>
 <p>此外 多种循环可以相互嵌套</p>
-<h4 id="循环控制语句"><a class="header" href="#循环控制语句">循环控制语句</a></h4>
+<h4 id="2循环控制语句"><a class="header" href="#2循环控制语句">2、循环控制语句</a></h4>
 <p>循环控制语句更改执行的正常序列。当执行离开一个范围时，所有在该范围中创建的自动对象都会被销毁。</p>
 <p>C++ 提供了下列的控制语句。点击链接查看每个语句的细节。</p>
 <table><thead><tr><th align="left">控制语句</th><th align="left">描述</th></tr></thead><tbody>
@@ -1196,6 +1196,1261 @@ int main ()
 <p>C++ 中的 <strong>continue</strong> 语句有点像 <strong>break</strong> 语句。但它不是强迫终止，continue 会跳过当前循环中的代码，强迫开始下一次循环。</p>
 <p>对于 <strong>for</strong> 循环，<strong>continue</strong> 语句会导致执行条件测试和循环增量部分。对于 <strong>while</strong> 和 <strong>do...while</strong> 循环，<strong>continue</strong> 语句会导致程序控制回到条件测试上。</p>
 <p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/2EB76530-877A-4AC1-87E6-501CEC7E6CB3.png" alt="img" /></p>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 10;
+
+   // do 循环执行
+   do
+   {
+       if( a == 15)
+       {
+          // 跳过迭代
+          a = a + 1;
+          continue;
+       }
+       cout &lt;&lt; &quot;a 的值：&quot; &lt;&lt; a &lt;&lt; endl;
+       a = a + 1;
+   }while( a &lt; 20 );
+ 
+   return 0;
+}
+/////////////////输出结果//////////////////////
+a 的值： 10
+a 的值： 11
+a 的值： 12
+a 的值： 13
+a 的值： 14（因为continue的存在的导致直接越过了15）
+a 的值： 16
+a 的值： 17
+a 的值： 18
+a 的值： 19
+</code></pre>
+<h5 id="3goto-语句-满足某个条件直接蹦到执行某个命令"><a class="header" href="#3goto-语句-满足某个条件直接蹦到执行某个命令">3、goto 语句 （满足某个条件直接蹦到执行某个命令）</a></h5>
+<p><strong>goto</strong> 语句允许把控制无条件转移到同一函数内的被标记的语句。</p>
+<p>C++ 中 <strong>goto</strong> 语句的语法：</p>
+<pre><code class="language-c++">goto label;
+..
+.
+label: statement;
+//在这里，label 是识别被标记语句的标识符，可以是任何除 C++ 关键字以外的纯文本。标记语句可以是任何语句，放置在标识符和冒号（:）后边。
+</code></pre>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/1472441355192426-8838760.jpg" alt="C++ goto 语句" /></p>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">#include&lt;iostream&gt;
+using namespace std;
+ 
+int main()
+{
+    int x,sum=0;
+    //定义标号L1
+L1: cout&lt;&lt;&quot;x=&quot;;
+    cin&gt;&gt;x;
+    if (x==-1)
+       goto L2;          //当用户输入-1时，转到L2语句处
+    else
+       sum+=x;
+    goto L1;             //只要用户没有输入-1，则转到L1语句处，程序一直将用户的输入默默地累加到变量sum中。
+    //定义标号L2
+L2: cout&lt;&lt;&quot;sum=&quot;&lt;&lt;sum&lt;&lt;endl;//一旦转到L2，将输出累计结果，程序运行结束。
+    system(&quot;pause&quot;);
+}
+</code></pre>
+<h5 id="无限循环"><a class="header" href="#无限循环">无限循环</a></h5>
+<p>如果条件永远不为假则可以完成无限循环，语法比如for（；；）</p>
+<h2 id="c-判断"><a class="header" href="#c-判断">C++ 判断</a></h2>
+<p>判断结构要求程序员指定一个或多个要评估或测试的条件，以及条件为真时要执行的语句（必需的）和条件为假时要执行的语句（可选的）。</p>
+<h4 id="1判断语句"><a class="header" href="#1判断语句">1、判断语句</a></h4>
+<p>C++ 编程语言提供了以下类型的判断语句。点击链接查看每个语句的细节。</p>
+<table><thead><tr><th align="left">语句</th><th align="left">描述</th></tr></thead><tbody>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-if.html">if 语句</a></td><td align="left">一个 <strong>if 语句</strong> 由一个布尔表达式后跟一个或多个语句组成。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-if-else.html">if...else 语句</a></td><td align="left">一个 <strong>if 语句</strong> 后可跟一个可选的 <strong>else 语句</strong>，else 语句在布尔表达式为假时执行。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-nested-if.html">嵌套 if 语句</a></td><td align="left">您可以在一个 <strong>if</strong> 或 <strong>else if</strong> 语句内使用另一个 <strong>if</strong> 或 <strong>else if</strong> 语句。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-switch.html">switch 语句</a></td><td align="left">一个 <strong>switch</strong> 语句允许测试一个变量等于多个值时的情况。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-nested-switch.html">嵌套 switch 语句</a></td><td align="left">您可以在一个 <strong>switch</strong> 语句内使用另一个 <strong>switch</strong> 语句。</td></tr>
+</tbody></table>
+<h5 id="1if语句"><a class="header" href="#1if语句">1、if语句</a></h5>
+<p>一个 <strong>if 语句</strong> 由一个布尔表达式后跟一个或多个语句组成。</p>
+<p>C++ 中 <strong>if</strong> 语句的语法：</p>
+<pre><code class="language-C++">if(boolean_expression)
+{
+   // 如果布尔表达式为真将执行的语句；
+}
+</code></pre>
+<h5 id="2if-else语句"><a class="header" href="#2if-else语句">2、if-else语句</a></h5>
+<p>一个 <strong>if 语句</strong> 后可跟一个可选的 <strong>else 语句</strong>，else 语句在布尔表达式为假时执行。</p>
+<p>C++ 中 <strong>if...else</strong> 语句的语法：</p>
+<pre><code class="language-C++">if(boolean_expression)
+{
+   // 如果布尔表达式为真将执行的语句；
+}
+else
+{
+   // 如果布尔表达式为假将执行的语句；
+}
+</code></pre>
+<p>if-else进阶版⭐️</p>
+<p>C++ 中的 <strong>if...else if...else</strong> 语句的语法：</p>
+<pre><code class="language-C++">if(boolean_expression 1)
+{
+   // 当布尔表达式 1 为真时执行
+}
+else if( boolean_expression 2)
+{
+   // 当布尔表达式 2 为真时执行
+}
+else if( boolean_expression 3)
+{
+   // 当布尔表达式 3 为真时执行
+}
+else 
+{
+   // 当上面条件都不为真时执行
+}
+</code></pre>
+<h5 id="3嵌套if"><a class="header" href="#3嵌套if">3、嵌套if</a></h5>
+<p>C++ 中 <strong>嵌套 if</strong> 语句的语法：</p>
+<pre><code class="language-C++">if( boolean_expression 1)
+{
+   // 当布尔表达式 1 为真时执行
+   if(boolean_expression 2)
+   {
+      // 当布尔表达式 2 为真时执行
+   }
+}
+</code></pre>
+<h5 id="4switch语句"><a class="header" href="#4switch语句">4、switch语句⭐️</a></h5>
+<p>一个 <strong>switch</strong> 语句允许测试一个变量等于多个值时的情况。每个值称为一个 case，且被测试的变量会对每个 <strong>switch case</strong> 进行检查。</p>
+<p>C++ 中 <strong>switch</strong> 语句的语法：</p>
+<pre><code class="language-C++">switch(expression){
+    case constant-expression  :
+       statement(s);
+       break; // 可选的
+    case constant-expression  :
+       statement(s);
+       break; // 可选的
+  
+    // 您可以有任意数量的 case 语句
+    default : // 可选的
+       statement(s);
+}
+</code></pre>
+<p><strong>switch</strong> 语句必须遵循下面的规则：</p>
+<ul>
+<li><strong>switch</strong> 语句中的 <strong>expression</strong> 必须是一个<strong>整型或枚举类型</strong>，或者是一个 class 类型，其中 class 有一个单一的转换函数将其转换为整型或枚举类型。</li>
+<li>在一个 switch 中可以有任意数量的 case 语句。每个 case 后跟一个要比较的值和一个冒号。</li>
+<li>case 的 <strong>constant-expression</strong> 必须与 switch 中的变量具有相同的数据类型，且必须是一个常量或字面量。</li>
+<li>当被测试的变量等于 case 中的常量时，case 后跟的语句将被执行，直到遇到 <strong>break</strong> 语句为止。</li>
+<li>当遇到 <strong>break</strong> 语句时，switch 终止，控制流将跳转到 switch 语句后的下一行。</li>
+<li>不是每一个 case 都需要包含 <strong>break</strong>。如果 case 语句不包含 <strong>break</strong>，控制流将会 <em>继续</em> 后续的 case，直到遇到 break 为止。</li>
+<li>一个 <strong>switch</strong> 语句可以有一个可选的 <strong>default</strong> case，出现在 switch 的结尾。default case 可用于在上面所有 case 都不为真时执行一个任务。default case 中的 <strong>break</strong> 语句不是必需的。</li>
+</ul>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   char grade = 'D';
+
+   switch(grade)
+   {
+   case 'A' :
+      cout &lt;&lt; &quot;很棒！&quot; &lt;&lt; endl; 
+      break;
+   case 'B' :
+   case 'C' :
+      cout &lt;&lt; &quot;做得好&quot; &lt;&lt; endl;
+      break;
+   case 'D' :
+      cout &lt;&lt; &quot;您通过了&quot; &lt;&lt; endl;
+      break;
+   case 'F' :
+      cout &lt;&lt; &quot;最好再试一下&quot; &lt;&lt; endl;
+      break;
+   default :
+      cout &lt;&lt; &quot;无效的成绩&quot; &lt;&lt; endl;
+   }
+   cout &lt;&lt; &quot;您的成绩是 &quot; &lt;&lt; grade &lt;&lt; endl;
+ 
+   return 0;
+}
+</code></pre>
+<p>同样的，switch语句也可以被嵌套使用</p>
+<p>C++ 中 <strong>嵌套 switch</strong> 语句的语法：</p>
+<pre><code class="language-C++">switch(ch1) {
+   case 'A': 
+      cout &lt;&lt; &quot;这个 A 是外部 switch 的一部分&quot;;
+      switch(ch2) {
+         case 'A':
+            cout &lt;&lt; &quot;这个 A 是内部 switch 的一部分&quot;;
+            break;
+         case 'B': // 内部 B case 代码
+      }
+      break;
+   case 'B': // 外部 B case 代码
+}
+</code></pre>
+<h4 id="2--运算符"><a class="header" href="#2--运算符">2、? : 运算符</a></h4>
+<p>我们已经在前面的章节中讲解了 <a href="https://www.w3cschool.cn/cpp/cpp-conditional-operator.html"><strong>条件运算符 ? :</strong></a>，可以用来替代 <strong>if...else</strong> 语句。它的一般形式如下：</p>
+<pre><code>Exp1 ? Exp2 : Exp3;
+</code></pre>
+<p>其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。</p>
+<p>? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。</p>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">//if-else写法
+if(a&lt;10){
+  var=10
+}
+else{
+  var=20
+}
+
+//expression写法
+var = (a&lt;10)?10:20;
+</code></pre>
+<h2 id="c-函数"><a class="header" href="#c-函数">C++ 函数</a></h2>
+<p>函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 <strong>main()</strong> ，所有简单的程序都可以定义其他额外的函数。</p>
+<p>您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p>
+<p>函数<strong>声明</strong>告诉编译器函数的名称、返回类型和参数。函数<strong>定义</strong>提供了函数的实际主体。</p>
+<p>C++ 标准库提供了大量的程序可以调用的内置函数。例如，函数 <strong>strcat()</strong> 用来连接两个字符串，函数 <strong>memcpy()</strong> 用来复制内存到另一个位置。</p>
+<p>函数还有很多叫法，比如方法、子例程或程序，等等。</p>
+<h4 id="1函数定义"><a class="header" href="#1函数定义">1、函数定义</a></h4>
+<p>C++ 中的函数定义的一般形式如下：</p>
+<p>⭐️ 定义函数时注意不要从主函数main()内部定义，只能从主函数体内部调用</p>
+<blockquote>
+<p>return_type funcition_name ( parameter_list )</p>
+<p>{</p>
+<p>​	body of the function </p>
+<p>}</p>
+</blockquote>
+<p>在 C++ 中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p>
+<ul>
+<li>**返回类型：**一个函数可以返回一个值。<strong>return_type</strong> 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 <strong>void</strong>。</li>
+<li>**函数名称：**这是函数的实际名称。函数名和参数列表一起构成了函数签名。</li>
+<li>**参数：**参数就像是占位符。当函数被调用时，您向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。</li>
+<li>**函数主体：**函数主体包含一组定义函数执行任务的语句。</li>
+</ul>
+<p>一个例子🌰</p>
+<p>以下是 <strong>max()</strong> 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：</p>
+<pre><code class="language-C++">// 函数返回两个数中较大的那个数
+ 
+int max(int num1, int num2) 
+{
+   // 局部变量声明
+   int result;
+ 
+   if (num1 &gt; num2)
+      result = num1;
+   else
+      result = num2;
+ 
+   return result; 
+}
+</code></pre>
+<p><strong>Tips</strong>📢：在函数变量定义时也可以添加形参的默认值，以后在使用的使用可以不赋值直接用，跟python中的使用方法一样。</p>
+<h4 id="2函数声明"><a class="header" href="#2函数声明">2、函数声明</a></h4>
+<p>函数<strong>声明</strong>会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。</p>
+<p>函数声明包括以下几个部分：</p>
+<pre><code>return_type function_name( parameter list );
+</code></pre>
+<p>针对上面定义的函数 max()，以下是函数声明：</p>
+<pre><code>int max(int num1, int num2);
+</code></pre>
+<p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p>
+<pre><code>int max(int, int);
+</code></pre>
+<p>⭐️<strong>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。也就是相当于python中的import函数，或者是相当于从其他文件中引用变量的extern函数</strong>⭐️</p>
+<blockquote>
+<p>也就是说使用到函数声明的时候一共有两种情况：</p>
+<ul>
+<li>因为代码是从上到下执行的，如果先定义后引用函数则不需要声明，反之如果先应用而函数定义部分在后面时则需要在文件开头添加函数声明部分</li>
+<li>第二种情况，在某个文件中定义了函数后，想要在另一个文件中引用这个函数，则需要在这个文件的开头部分添加函数声明，也就类比与python中的import函数</li>
+</ul>
+</blockquote>
+<h4 id="3函数参数"><a class="header" href="#3函数参数">3、函数参数</a></h4>
+<p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的<strong>形式参数</strong>。</p>
+<p>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。</p>
+<p>当调用函数时，有两种向函数传递参数的方式：</p>
+<table><thead><tr><th align="center">调用类型</th><th align="left">描述</th></tr></thead><tbody>
+<tr><td align="center"><a href="https://www.w3cschool.cn/cpp/cpp-function-call-by-value.html">传值调用</a>                     （默认）</td><td align="left">该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。</td></tr>
+<tr><td align="center"><a href="https://www.w3cschool.cn/cpp/cpp-function-call-by-pointer.html">指针调用</a></td><td align="left">该方法把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。<strong>这意味着，修改形式参数会影响实际参数。</strong></td></tr>
+<tr><td align="center"><a href="https://www.w3cschool.cn/cpp/cpp-function-call-by-reference.html">引用调用</a></td><td align="left">该方法把参数的引用复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。<strong>这意味着，修改形式参数会影响实际参数。</strong></td></tr>
+</tbody></table>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">// 函数定义
+								//第一种
+/////////////////引用形式/////////////////
+void swap(int x, int y)
+{
+   int temp;
+
+   temp = x; /* 保存 x 的值 */
+   x = y;    /* 把 y 赋值给 x */
+   y = temp; /* 把 x 赋值给 y */
+  
+   return;
+}
+/////////////////////////////////////////
+								
+								//第二种
+/////////////////指针形式/////////////////
+void swap(int *x, int *y)
+{
+   int temp;
+   temp = *x;	/* 保存地址 x 的值 */
+   *x = *y;		/* 把 y 赋值给 x */
+   *y = temp;	/* 把 x 赋值给 y */
+  
+   return;
+}
+/////////////////////////////////////////
+
+								//第三种
+/////////////////引用形式/////////////////
+// 函数定义
+void swap(int &amp;x, int &amp;y)
+{
+   int temp;
+   temp = x; /* 保存地址 x 的值 */
+   x = y;    /* 把 y 赋值给 x */
+   y = temp; /* 把 x 赋值给 y  */
+  
+   return;
+}
+
+#include &lt;iostream&gt;
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 100;
+   int b = 200;
+ 
+   cout &lt;&lt; &quot;交换前，a 的值：&quot; &lt;&lt; a &lt;&lt; endl;
+   cout &lt;&lt; &quot;交换前，b 的值：&quot; &lt;&lt; b &lt;&lt; endl;
+ 
+   // 调用函数来交换值
+   swap(a, b);
+ 
+   cout &lt;&lt; &quot;交换后，a 的值：&quot; &lt;&lt; a &lt;&lt; endl;
+   cout &lt;&lt; &quot;交换后，b 的值：&quot; &lt;&lt; b &lt;&lt; endl;
+ 
+   return 0;
+}
+////////////////////运行结果(传值）///////////////////////
+交换前，a 的值： 100
+交换前，b 的值： 200
+交换后，a 的值： 100
+交换后，b 的值： 200
+📢：从这可以看出，局部变量在函数呗执行完之后就被销毁了，未对外部全局变量产生影响
+
+////////////////////运行结果(指针和引用）///////////////////////
+交换前，a 的值： 100
+交换前，b 的值： 200
+交换后，a 的值： 200
+交换后，b 的值： 100
+📢：从这可以看出，局部变量在函数呗执行完之后就被销毁了，未对外部全局变量产生影响
+</code></pre>
+<h2 id="c-数字"><a class="header" href="#c-数字">C++ 数字</a></h2>
+<p>通常，当我们需要用到数字时，我们会使用原始的数据类型，如 <strong>int、short、long、float 和 double</strong> 等等。这些用于数字的数据类型，其可能的值和数值范围，我们已经在 C++ 数据类型一章中讨论过。</p>
+<h4 id="1c定义数字"><a class="header" href="#1c定义数字">1、C++定义数字</a></h4>
+<p>我们已经在之前章节的各种实例中定义过数字。下面是一个 C++ 中定义各种类型数字的综合实例：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main ()
+{
+   // 数字定义
+   short  s;
+   int    i;
+   long   l;
+   float  f;
+   double d;
+   
+   // 数字赋值
+   s = 10;      
+   i = 1000;    
+   l = 1000000; 
+   f = 230.47;  
+   d = 30949.374;
+   
+   // 数字输出
+   cout &lt;&lt; &quot;short  s :&quot; &lt;&lt; s &lt;&lt; endl;
+   cout &lt;&lt; &quot;int    i :&quot; &lt;&lt; i &lt;&lt; endl;
+   cout &lt;&lt; &quot;long   l :&quot; &lt;&lt; l &lt;&lt; endl;
+   cout &lt;&lt; &quot;float  f :&quot; &lt;&lt; f &lt;&lt; endl;
+   cout &lt;&lt; &quot;double d :&quot; &lt;&lt; d &lt;&lt; endl;
+ 
+   return 0;
+}
+
+/* 结果输出
+short  s :10
+int    i :1000
+long   l :1000000
+float  f :230.47
+double d :30949.4*/
+</code></pre>
+<h4 id="2c数学运算"><a class="header" href="#2c数学运算">2、C++数学运算</a></h4>
+<p>在 C++ 中，除了可以创建各种函数，还包含了各种有用的函数供您使用。这些函数写在标准 C 和 C++ 库中，叫做<strong>内置函数</strong>。您可以在程序中引用这些函数。</p>
+<p>C++ 内置了丰富的数学函数，可对各种数字进行运算。下表列出了 C++ 中一些有用的内置的数学函数。</p>
+<p>为了利用这些函数，您需要引用数学头文件 ==<strong><cmath></strong>==。</p>
+<table><thead><tr><th align="center">序号</th><th align="left">函数 &amp; 描述</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="left"><strong>double cos(double);</strong> 该函数返回弧度角（double 型）的余弦。</td></tr>
+<tr><td align="center">2</td><td align="left"><strong>double sin(double);</strong> 该函数返回弧度角（double 型）的正弦。</td></tr>
+<tr><td align="center">3</td><td align="left"><strong>double tan(double);</strong> 该函数返回弧度角（double 型）的正切。</td></tr>
+<tr><td align="center">4</td><td align="left"><strong>double log(double);</strong> 该函数返回参数的自然对数。</td></tr>
+<tr><td align="center">5</td><td align="left"><strong>double pow(double, double);</strong> 假设第一个参数为 x，第二个参数为 y，则该函数返回 x 的 y 次方。</td></tr>
+<tr><td align="center">6</td><td align="left"><strong>double hypot(double, double);</strong> 该函数返回两个参数的平方总和的平方根，也就是说，参数为一个直角三角形的两个直角边，函数会返回斜边的长度。</td></tr>
+<tr><td align="center">7</td><td align="left"><strong>double sqrt(double);</strong> 该函数返回参数的平方根。</td></tr>
+<tr><td align="center">8</td><td align="left"><strong>int abs(int);</strong> 该函数返回整数的绝对值。</td></tr>
+<tr><td align="center">9</td><td align="left"><strong>double fabs(double);</strong> 该函数返回任意一个十进制数的绝对值。</td></tr>
+<tr><td align="center">10</td><td align="left"><strong>double floor(double);</strong> 该函数返回一个小于或等于传入参数的最大整数。</td></tr>
+</tbody></table>
+<h4 id="3c随机数"><a class="header" href="#3c随机数">3、C++随机数</a></h4>
+<p>在许多情况下，需要生成随机数。关于随机数生成器，有两个相关的函数。一个是 <strong>rand()</strong>，该函数只返回一个伪随机数。生成随机数之前必须先调用 <strong>srand()</strong> 函数。</p>
+<p>下面是一个关于生成随机数的简单实例。实例中使用了 <strong>time()</strong> 函数来获取系统时间的秒数，通过调用 rand() 函数来生成随机数：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+
+using namespace std;
+ 
+int main ()
+{
+   int i,j;
+ 
+   // 设置种子
+   srand( (unsigned)time( NULL ) );
+
+   /* 生成 10 个随机数 */
+   for( i = 0; i &lt; 10; i++ )
+   {
+      // 生成实际的随机数
+      j= rand();
+      cout &lt;&lt;&quot;随机数： &quot; &lt;&lt; j &lt;&lt; endl;
+   }
+
+   return 0;
+} 
+</code></pre>
+<h2 id="c-数组"><a class="header" href="#c-数组">C++ 数组</a></h2>
+<p>C++ 支持<strong>数组</strong>数据结构，它可以存储一个<strong>固定大小的相同类型</strong>元素的顺序集合。数组是用来存储一系列数据，但它往往被认为是一系列相同类型的变量。</p>
+<p>所有的数组都是由连续的内存位置组成。最低的地址对应第一个元素，最高的地址对应最后一个元素。</p>
+<h4 id="1声明数组"><a class="header" href="#1声明数组">1、声明数组</a></h4>
+<p>在 C++ 中要声明一个数组，需要指定元素的类型和元素的数量，如下所示：</p>
+<pre><code class="language-C++">type arrayName [ arraySize ];
+</code></pre>
+<p>这叫做一维数组。<strong>arraySize</strong> 必须是一个大于零的整数常量，<strong>type</strong> 可以是任意有效的 C++ 数据类型。例如，要声明一个类型为 double 的包含 10 个元素的数组 <strong>balance</strong>，声明语句如下：</p>
+<pre><code class="language-C++">double balance[10];
+</code></pre>
+<h4 id="2初始化数组"><a class="header" href="#2初始化数组">2、初始化数组</a></h4>
+<p>在 C++ 中，您可以逐个初始化数组，也可以使用一个初始化语句，如下所示：</p>
+<pre><code class="language-c">double balance[5] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+</code></pre>
+<p>大括号 { } 之间的值的数目不能大于我们在数组声明时在方括号 [ ] 中指定的元素数目。</p>
+<p>如果您省略掉了数组的大小，数组的大小则为初始化时元素的个数。因此，如果：</p>
+<pre><code class="language-C++">double balance[] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+</code></pre>
+<p>下面这个例子包含了数组声明、赋值、访问的流程</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+#include &lt;iomanip&gt;
+using std::setw;
+ 
+int main ()
+{
+   int n[ 10 ]; // n 是一个包含 10 个整数的数组
+ 
+   // 初始化数组元素          
+   for ( int i = 0; i &lt; 10; i++ )
+   {
+      n[ i ] = i + 100; // 设置元素 i 为 i + 100
+   }
+   cout &lt;&lt; &quot;Element&quot; &lt;&lt; setw( 13 ) &lt;&lt; &quot;Value&quot; &lt;&lt; endl;
+ 
+   // 输出数组中每个元素的值                     
+   for ( int j = 0; j &lt; 10; j++ )
+   {
+      cout &lt;&lt; setw( 7 )&lt;&lt; j &lt;&lt; setw( 13 ) &lt;&lt; n[ j ] &lt;&lt; endl;
+   }
+ 
+   return 0;
+}
+</code></pre>
+<blockquote>
+<p>可以看到，数组初始化需要挨个设置，也无法跟python一样直接输出数组，而是需要用循环打印每个元素。</p>
+</blockquote>
+<h4 id="3多维数组"><a class="header" href="#3多维数组">3、多维数组</a></h4>
+<p>同样的，C++也可以类似python创建多维数组，具体格式要求如下：</p>
+<p>C++ 支持多维数组。多维数组声明的一般形式如下：</p>
+<pre><code class="language-c++">type name[size1][size2]...[sizeN];
+</code></pre>
+<p>例如，下面的声明创建了一个三维 5 . 10 . 4 整型数组：</p>
+<pre><code class="language-C++">int threedim[5][10][4];
+</code></pre>
+<p><strong>初始化二维数组的两种方法</strong></p>
+<ul>
+<li>多维数组可以通过在括号内为每行指定值来进行初始化。下面是一个带有 3 行 4 列的数组。</li>
+</ul>
+<pre><code class="language-C++">int a[3][4] = {  
+ {0, 1, 2, 3} ,   /*  初始化索引号为 0 的行 */
+ {4, 5, 6, 7} ,   /*  初始化索引号为 1 的行 */
+ {8, 9, 10, 11}   /*  初始化索引号为 2 的行 */
+};
+</code></pre>
+<ul>
+<li>内部嵌套的括号是可选的，下面的初始化与上面是等同的：</li>
+</ul>
+<pre><code class="language-C++">int a[3][4] = {0,1,2,3,4,5,6,7,8,9,10,11};
+</code></pre>
+<p>一个例子🌰</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+//二维数组的定义及输出
+int main ()
+{
+   // 一个带有 5 行 2 列的数组
+   int a[5][2] = { {0,0}, {1,2}, {2,4}, {3,6},{4,8}};
+ 
+   // 输出数组中每个元素的值                      
+   for ( int i = 0; i &lt; 5; i++ )
+      for ( int j = 0; j &lt; 2; j++ )
+      {
+         cout &lt;&lt; &quot;a[&quot; &lt;&lt; i &lt;&lt; &quot;][&quot; &lt;&lt; j &lt;&lt; &quot;]: &quot;;
+         cout &lt;&lt; a[i][j]&lt;&lt; endl;
+      }
+ 
+   return 0;
+}
+</code></pre>
+<h4 id="c-中数组其他相关内容详解"><a class="header" href="#c-中数组其他相关内容详解">C++ 中数组其他相关内容详解</a></h4>
+<p>在 C++ 中，数组是非常重要的，我们需要了解更多有关数组的细节。下面列出了 C++ 程序员必须清楚的一些与数组相关的重要概念：</p>
+<table><thead><tr><th align="left">概念</th><th align="left">描述</th></tr></thead><tbody>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-multi-dimensional-arrays.html">多维数组</a></td><td align="left">C++ 支持多维数组。多维数组最简单的形式是二维数组。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-pointer-to-an-array.html">指向数组的指针</a></td><td align="left">您可以通过指定不带索引的数组名称来生成一个指向数组中第一个元素的指针。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-passing-arrays-to-functions.html">传递数组给函数</a></td><td align="left">您可以通过指定不带索引的数组名称来给函数传递一个指向数组的指针。</td></tr>
+<tr><td align="left"><a href="https://www.w3cschool.cn/cpp/cpp-return-arrays-from-function.html">从函数返回数组</a></td><td align="left">C++ 允许从函数返回数组。</td></tr>
+</tbody></table>
+<ul>
+<li>后三个内容需要学习完指针内容后才可以理解，因此此处先搁置占位</li>
+</ul>
+<h2 id="c-字符串"><a class="header" href="#c-字符串">C++ 字符串</a></h2>
+<p>C++ 提供了以下两种类型的字符串表示形式：</p>
+<ul>
+<li>C 风格字符串</li>
+<li>C++ 引入的 string 类类型</li>
+</ul>
+<h4 id="1c风格字符串"><a class="header" href="#1c风格字符串">1、C风格字符串</a></h4>
+<p>C 风格的字符串起源于 C 语言，并在 C++ 中继续得到支持。<strong>字符串实际上是使用 null 字符 终止的一维字符数组</strong>。因此，一个以 null 结尾的字符串，包含了组成字符串的字符。</p>
+<p>下面的声明和初始化创建了一个 &quot;Hello&quot; 字符串。由于在数组的末尾存储了空字符，所以字符数组的大小比单词 &quot;Hello&quot; 的字符数多一个。char greeting[6] = {'H', 'e', 'l', 'l', 'o', ''};</p>
+<p>依据数组初始化规则，您可以把上面的语句写成以下语句：</p>
+<pre><code>char greeting[] = &quot;Hello&quot;;
+</code></pre>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/string_representation.jpg" alt="C/C++ 中的字符串表示" /></p>
+<p>其实，您不需要把 <em>null</em> 字符放在字符串常量的末尾。C++ 编译器会在初始化数组时，自动把 '' 放在字符串的末尾。让我们尝试输出上面的字符串</p>
+<pre><code class="language-c">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main ()
+{
+   char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+
+   cout &lt;&lt; &quot;Greeting message: &quot;;
+   cout &lt;&lt; greeting &lt;&lt; endl;
+
+   return 0;
+} 
+</code></pre>
+<p>C++ 中有大量的函数用来操作以 null 结尾的字符串：supports a wide range of functions that manipulate null-terminated strings:</p>
+<table><thead><tr><th align="left">序号</th><th align="left">函数 &amp; 目的</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="left"><strong>strcpy(s1, s2);</strong> 复制字符串 s2 到字符串 s1。</td></tr>
+<tr><td align="left">2</td><td align="left"><strong>strcat(s1, s2);</strong> 连接字符串 s2 到字符串 s1 的末尾。</td></tr>
+<tr><td align="left">3</td><td align="left"><strong>strlen(s1);</strong> 返回字符串 s1 的长度。</td></tr>
+<tr><td align="left">4</td><td align="left"><strong>strcmp(s1, s2);</strong> 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回小于 0；如果 s1&gt;s2 则返回大于 0。</td></tr>
+<tr><td align="left">5</td><td align="left"><strong>strchr(s1, ch);</strong> 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。</td></tr>
+<tr><td align="left">6</td><td align="left"><strong>strstr(s1, s2);</strong> 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。</td></tr>
+</tbody></table>
+<p>下面的实例使用了上述的一些函数：</p>
+<pre><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int main ()
+{
+   char str1[11] = &quot;Hello&quot;;
+   char str2[11] = &quot;World&quot;;
+   char str3[11];
+   int  len ;
+
+   // 复制 str1 到 str3
+   strcpy( str3, str1);
+   cout &lt;&lt; &quot;strcpy( str3, str1) : &quot; &lt;&lt; str3 &lt;&lt; endl;
+
+   // 连接 str1 和 str2
+   strcat( str1, str2);
+   cout &lt;&lt; &quot;strcat( str1, str2): &quot; &lt;&lt; str1 &lt;&lt; endl;
+
+   // 连接后，str1 的总长度
+   len = strlen(str1);
+   cout &lt;&lt; &quot;strlen(str1) : &quot; &lt;&lt; len &lt;&lt; endl;
+
+   return 0;
+}
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code class="language-c">strcpy( str3, str1) : Hello
+strcat( str1, str2): HelloWorld
+strlen(str1) : 10
+</code></pre>
+<h2 id="c-中的-string-类"><a class="header" href="#c-中的-string-类">C++ 中的 String 类</a></h2>
+<p>C++ 标准库提供了 <strong>string</strong> 类类型，支持上述所有的操作，另外还增加了其他更多的功能。我们将学习 C++ 标准库中的这个类，现在让我们先来看看下面这个实例：</p>
+<p>现在您可能还无法透彻地理解这个实例，因为到目前为止我们还没有讨论类和对象。所以现在您可以只是粗略地看下这个实例，等理解了面向对象的概念之后再回头来理解这个实例。</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt; //这里需要引入string这个模块
+
+using namespace std;
+
+int main ()
+{
+   string str1 = &quot;Hello&quot;; //建立string类型的字符串，在这里类似于类的实例化，后续字符串操作类似于python中的操作
+   string str2 = &quot;World&quot;;
+   string str3;
+   int  len ;
+
+   // 复制 str1 到 str3
+   str3 = str1;
+   cout &lt;&lt; &quot;str3 : &quot; &lt;&lt; str3 &lt;&lt; endl;
+
+   // 连接 str1 和 str2
+   str3 = str1 + str2;
+   cout &lt;&lt; &quot;str1 + str2 : &quot; &lt;&lt; str3 &lt;&lt; endl;
+
+   // 连接后，str3 的总长度
+   len = str3.size();
+   cout &lt;&lt; &quot;str3.size() :  &quot; &lt;&lt; len &lt;&lt; endl;
+
+   return 0;
+} 
+</code></pre>
+<h2 id="c-指针"><a class="header" href="#c-指针">C++ 指针⭐️⭐️</a></h2>
+<p>学习 C++ 的指针既简单又有趣。通过指针，可以简化一些 C++ 编程任务的执行，还有一些任务，如动态内存分配，没有指针是无法执行的。所以，想要成为一名优秀的 C++ 程序员，学习指针是很有必要的。</p>
+<p>正如您所知道的，每一个变量都有一个内存位置，每一个内存位置都定义了可使用连字号（&amp;）运算符访问的地址，它表示了在内存中的一个地址。请看下面的实例，它将输出定义的变量地址：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main ()
+{
+   int  var1;
+   char var2[10];
+
+   cout &lt;&lt; &quot;var1 变量的地址： &quot;;
+   cout &lt;&lt; &amp;var1 &lt;&lt; endl;
+
+   cout &lt;&lt; &quot;var2 变量的地址： &quot;;
+   cout &lt;&lt; &amp;var2 &lt;&lt; endl;
+
+   return 0;
+}
+</code></pre>
+<h4 id="什么是指针"><a class="header" href="#什么是指针">什么是指针？</a></h4>
+<p><strong>指针</strong>是一个变量，其值为另一个变量的地址，即，内存位置的直接地址。就像其他变量或常量一样，==您必须在使用指针存储其他变量地址之前，对其进行声明==。指针变量声明的一般形式为：</p>
+<pre><code class="language-C">type *var-name;
+</code></pre>
+<p>在这里，<strong>type</strong> 是指针的基类型，它必须是一个有效的 C++ 数据类型，<strong>var-name</strong> 是指针变量的名称。用来声明指针的星号 * 与乘法中使用的星号是相同的。但是，在这个语句中，星号是用来指定一个变量是指针。以下是有效的指针声明：</p>
+<pre><code class="language-C++">int    *ip;    /* 一个整型的指针 */
+double *dp;    /* 一个 double 型的指针 */
+float  *fp;    /* 一个浮点型的指针 */
+char   *ch     /* 一个字符型的指针 */
+</code></pre>
+<p>所有指针的值的实际数据类型，不管是整型、浮点型、字符型，还是其他的数据类型，都是一样的，都是一个代表内存地址的长的十六进制数。<strong>不同数据类型的指针之间唯一的不同是，指针所指向的变量或常量的数据类型不同。</strong></p>
+<p>⭐️使用**&amp;<strong>符号来访问变量的地址，使用</strong>***来访问指针对应的具体值。⭐️</p>
+<table><thead><tr><th>符号</th><th>意义</th></tr></thead><tbody>
+<tr><td>&amp;</td><td>取地址</td></tr>
+<tr><td>*</td><td>解引用</td></tr>
+</tbody></table>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main ()
+{
+   int  var = 20;   // 实际变量的声明
+   int  *ip;        // 指针变量的声明
+
+   ip = &amp;var;       // 在指针变量中存储 var 的地址
+
+   cout &lt;&lt; &quot;Value of var variable: &quot;;
+   cout &lt;&lt; var &lt;&lt; endl;
+
+   // 输出在指针变量中存储的地址
+   cout &lt;&lt; &quot;Address stored in ip variable: &quot;;
+   cout &lt;&lt; ip &lt;&lt; endl;
+
+   // 访问指针中地址的值
+   cout &lt;&lt; &quot;Value of *ip variable: &quot;;
+   cout &lt;&lt; *ip &lt;&lt; endl;
+
+   return 0;
+}
+
+/* 输出结果
+Value of var variable: 20
+Address stored in ip variable: 0xbfc601ac
+Value of *ip variable: 20
+*/
+</code></pre>
+<h4 id="c-null指针"><a class="header" href="#c-null指针">C++ NULL指针</a></h4>
+<p>在变量声明的时候，如果没有确切的地址可以赋值，为指针变量赋一个 NULL 值是一个良好的编程习惯。赋为 NULL 值的指针被称为<strong>空</strong>指针。</p>
+<p>NULL 指针是一个定义在标准库中的值为零的常量。请看下面的程序：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main ()
+{
+   int  *ptr = NULL;
+
+   cout &lt;&lt; &quot;ptr 的值是 &quot; &lt;&lt; ptr ;
+ 
+   return 0;
+}
+//程序输出的结果为：
+//ptr 的值是0!
+</code></pre>
+<p>​	在大多数的操作系统上，程序不允许访问地址为 0 的内存，因为该内存是操作系统保留的。然而，内存地址 0 有特别重要的意义，它表明该指针不指向一个可访问的内存位置。但按照惯例，如果指针包含空值（零值），则假定它不指向任何东西。<strong>如果所有未使用的指针都被赋予空值，同时避免使用空指针，就可以防止误用一个未初始化的指针。很多时候，未初始化的变量存有一些垃圾值，导致程序难以调试。</strong>（也就是在定义变量的时候最好初始化不要定义个空的，否则有可能造成意外错误）</p>
+<h4 id="c-指针的算术运算"><a class="header" href="#c-指针的算术运算">C++ 指针的算术运算</a></h4>
+<p>指针是一个用数值表示的地址。因此，您可以对指针执行算术运算。可以对指针进行四种算术运算：++、--、+、-</p>
+<p>假设 <strong>ptr</strong> 是一个指向地址 1000 的整型指针，是一个 32 位的整数，让我们对该指针执行下列的算术运算：</p>
+<pre><code>ptr++
+</code></pre>
+<p>在执行完上述的运算之后，<strong>ptr</strong> 将指向位置 1004，因为 ptr 每增加一次，它都将指向下一个整数位置，即当前位置往后移 4 个字节。这个运算会在不影响内存位置中实际值的情况下，移动指针到下一个内存位置。如果 <strong>ptr</strong> 指向一个地址为 1000 的字符，上面的运算会导致指针指向位置 1001，因为下一个字符位置是在 1001。</p>
+<h5 id="1递增一个指针"><a class="header" href="#1递增一个指针">1、<strong>递增一个指针</strong></a></h5>
+<p>我们喜欢在程序中使用指针代替数组，因为变量指针可以递增，而数组不能递增，因为数组是一个常量指针。下面的程序递增变量指针，以便顺序访问数组中的每一个元素：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+const int MAX = 3;
+
+int main ()
+{
+   int  var[MAX] = {10, 100, 200};
+   int  *ptr;
+
+   // 指针中的数组地址
+   ptr = var; //这里var代表的是数组第一个变量的地址，因此后续才可以用地址递增访问变量值
+   for (int i = 0; i &lt; MAX; i++)
+   {
+      cout &lt;&lt; &quot;Address of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; ptr &lt;&lt; endl;
+
+      cout &lt;&lt; &quot;Value of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; *ptr &lt;&lt; endl;
+
+      // 移动到下一个位置
+      ptr++;
+   }
+   return 0;
+}
+
+</code></pre>
+<h5 id="2递减一个指针"><a class="header" href="#2递减一个指针">2、递减一个指针</a></h5>
+<p>同样地，对指针进行递减运算，即把值减去其数据类型的字节数，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+const int MAX = 3;
+
+int main ()
+{
+   int  var[MAX] = {10, 100, 200};
+   int  *ptr;
+
+   // 指针中最后一个元素的地址
+   ptr = &amp;var[MAX-1];//与前一种情况不同的是，这里指针直接指向数组最后一个元素，倒着往前访问
+   for (int i = MAX; i &gt; 0; i--)
+   {
+      cout &lt;&lt; &quot;Address of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; ptr &lt;&lt; endl;
+
+      cout &lt;&lt; &quot;Value of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; *ptr &lt;&lt; endl;
+
+      // 移动到下一个位置
+      ptr--;
+   }
+   return 0;
+}
+</code></pre>
+<h5 id="3指针的比较"><a class="header" href="#3指针的比较"><strong>3、指针的比较</strong></a></h5>
+<p>指针可以用关系运算符进行比较，如 ==、&lt; 和 &gt;。如果 p1 和 p2 指向两个相关的变量，比如同一个数组中的不同元素，则可对 p1 和 p2 进行大小比较。</p>
+<p>下面的程序修改了上面的实例，只要变量指针所指向的地址小于或等于数组的最后一个元素的地址 &amp;var[MAX - 1]，则把变量指针进行递增：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+const int MAX = 3;
+
+int main ()
+{
+   int  var[MAX] = {10, 100, 200};
+   int  *ptr;
+
+   // 指针中第一个元素的地址,数组中元素越靠后对应的指针值越大
+   ptr = var;
+   int i = 0;
+   while ( ptr &lt;= &amp;var[MAX - 1] )
+   {
+      cout &lt;&lt; &quot;Address of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; ptr &lt;&lt; endl;
+
+      cout &lt;&lt; &quot;Value of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; *ptr &lt;&lt; endl;
+
+      // 指向上一个位置
+      ptr++;
+      i++;
+   }
+   return 0;
+}
+
+</code></pre>
+<h4 id="c指针vs数组"><a class="header" href="#c指针vs数组">C++指针VS数组</a></h4>
+<p>​	指针和数组是密切相关的。事实上，指针和数组在很多情况下是可以互换的。例如，一个指向数组开头的指针，<strong>可以通过使用指针的算术运算或数组索引来访问数组</strong>。类似于上文中举例的使用指针访问数组中元素的具体数值。==指针就类似于数组的索引==</p>
+<p>但是！！，数组和指针并不是完全相等可以无条件交换的！！！</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+ 
+using namespace std;
+const int MAX = 3;
+ 
+int main ()
+{
+   int  var[MAX] = {10, 100, 200};
+ 
+   for (int i = 0; i &lt; MAX; i++)
+   {
+      *var = i;    // 这是正确的语法,
+      var++;       // 这是不正确的 这是因为在这里var是一个指针常量，如果想要改变他时则编译器就会自动报错
+   }
+   return 0;
+}
+</code></pre>
+<h4 id="c指针数组"><a class="header" href="#c指针数组">C++指针数组</a></h4>
+<p>数组除了可以储存int,char等类别外，同样可以储存指针类型</p>
+<p>下面是一个指向整数的指针数组的声明：</p>
+<pre><code class="language-C++">int *ptr[MAX];
+</code></pre>
+<p>在这里，把 <strong>ptr</strong> 声明为一个数组，由 MAX 个整数指针组成。因此，ptr 中的每个元素，都是一个指向 int 值的指针。下面的实例用到了三个整数，它们将存储在一个指针数组中，如下所示:</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+ 
+using namespace std;
+const int MAX = 3;
+ 
+int main ()
+{
+   int  var[MAX] = {10, 100, 200};
+   int *ptr[MAX];
+ 
+   for (int i = 0; i &lt; MAX; i++)
+   {
+      ptr[i] = &amp;var[i]; // 赋值为整数的地址
+   }
+   for (int i = 0; i &lt; MAX; i++)
+   {
+      cout &lt;&lt; &quot;Value of var[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+      cout &lt;&lt; *ptr[i] &lt;&lt; endl;
+   }
+   return 0;
+}
+
+</code></pre>
+<p>也可以用一个指向字符的指针数组来存储一个字符串列表，如下：</p>
+<pre><code class="language-C++">const char *names[4] = {
+                   &quot;Zara Ali&quot;,
+                   &quot;Hina Ali&quot;,
+                   &quot;Nuha Ali&quot;,
+                   &quot;Sara Ali&quot;,}
+////////此外，还有定义字符串列表的另一种方法
+char names[4] = {
+                   'a',
+                   'b',
+                   'c',
+                   'd',}//此时不能储存字符串，只能储存单个的字母
+</code></pre>
+<h5 id="c-指向指针的指针多级间接寻址"><a class="header" href="#c-指向指针的指针多级间接寻址">C++ 指向指针的指针（多级间接寻址）</a></h5>
+<p>指向指针的指针是一种多级间接寻址的形式，或者说是一个指针链。通常，一个指针包含一个变量的地址。</p>
+<p>一个指向指针的指针变量必须如下声明，即在变量名前放置两个星号。例如，下面声明了一个指向 int 类型指针的指针：</p>
+<pre><code class="language-C++">int **var;	
+//同样的，为了解析指针储存的变量值，需要使用两个**来进行解耦
+</code></pre>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+ 
+using namespace std;
+ 
+int main ()
+{
+   int  var;
+   int  *ptr;
+   int  **pptr;
+
+   var = 3000;
+
+   // 获取 var 的地址
+   ptr = &amp;var;
+
+   // 使用运算符 &amp; 获取 ptr 的地址
+   pptr = &amp;ptr;
+
+   // 使用 pptr 获取值
+   cout &lt;&lt; &quot;Value of var :&quot; &lt;&lt; var &lt;&lt; endl;
+   cout &lt;&lt; &quot;Value available at *ptr :&quot; &lt;&lt; *ptr &lt;&lt; endl;
+   cout &lt;&lt; &quot;Value available at **pptr :&quot; &lt;&lt; **pptr &lt;&lt; endl;
+
+   return 0;
+}
+// 就是个指针的嵌套
+</code></pre>
+<h5 id="c-传递指针给函数"><a class="header" href="#c-传递指针给函数">C++ 传递指针给函数</a></h5>
+<p>C++ 允许您传递指针给函数，只需要简单地声明函数参数为指针类型即可。</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+ 
+using namespace std;
+void getSeconds(unsigned long *par);
+
+int main ()
+{
+   unsigned long sec;
+
+
+   getSeconds( &amp;sec );
+
+   // 输出实际值
+   cout &lt;&lt; &quot;Number of seconds :&quot; &lt;&lt; sec &lt;&lt; endl;
+
+   return 0;
+}
+
+void getSeconds(unsigned long *par)
+{
+   // 获取当前的秒数
+   *par = time( NULL );
+   return;
+}
+//返回值
+Number of seconds :1294450468
+</code></pre>
+<p>能接受指针作为参数的函数，也能接受数组作为参数，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+// 函数声明
+double getAverage(int *arr, int size);
+ 
+int main ()
+{
+   // 带有 5 个元素的整型数组
+   int balance[5] = {1000, 2, 3, 17, 50};
+   double avg;
+ 
+   // 传递一个指向数组的指针作为参数
+   avg = getAverage( balance, 5 ) ;
+ 
+   // 输出返回值
+   cout &lt;&lt; &quot;Average value is: &quot; &lt;&lt; avg &lt;&lt; endl; 
+    
+   return 0;
+}
+
+double getAverage(int *arr, int size)
+{
+  int    i, sum = 0;       
+  double avg;          
+ 
+  for (i = 0; i &lt; size; ++i)
+  {
+    sum += arr[i];
+   }
+ 
+  avg = double(sum) / size;
+ 
+  return avg;
+}
+
+</code></pre>
+<p>数组≈指针，但是指针的概念要大于数组，指针比数组更加灵活</p>
+<h5 id="c-从函数返回指针数组"><a class="header" href="#c-从函数返回指针数组">C++ 从函数返回指针/数组</a></h5>
+<p>C++ 不允许返回一个完整的数组作为函数的参数。但是，您可以通过指定不带索引的数组名来返回一个指向数组的指针</p>
+<pre><code class="language-C++">int * myFunction()
+{
+.
+.
+.
+}
+
+</code></pre>
+<p><strong>另外，C++ 不支持在函数外返回局部变量的地址，除非定义局部变量为 static 变量。</strong></p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+ 
+using namespace std;
+ 
+// 要生成和返回随机数的函数
+int * getRandom( )
+{
+  static int  r[10];//⭐️在这里！！！！，要用static，否则虽然函数会生成r，但是在函数执行完毕后就会被销毁，这时返回的指针不能正确指示数组的情况✅
+ 
+  // 设置种子
+  srand( (unsigned)time( NULL ) );
+  for (int i = 0; i &lt; 10; ++i)
+  {
+    r[i] = rand();
+    cout &lt;&lt; r[i] &lt;&lt; endl;
+  }
+ 
+  return r;
+}
+ 
+// 要调用上面定义函数的主函数
+int main ()
+{
+   // 一个指向整数的指针
+   int *p;
+ 
+   p = getRandom();
+   for ( int i = 0; i &lt; 10; i++ )
+   {
+       cout &lt;&lt; &quot;*(p + &quot; &lt;&lt; i &lt;&lt; &quot;) : &quot;;
+       cout &lt;&lt; *(p + i) &lt;&lt; endl;
+   }
+ 
+   return 0;
+}
+
+</code></pre>
+<h2 id="c-指针总结及相关容易混淆概念"><a class="header" href="#c-指针总结及相关容易混淆概念">C++ 指针总结及相关容易混淆概念</a></h2>
+<h4 id="一内存和地址"><a class="header" href="#一内存和地址"><strong>一，内存和地址</strong></a></h4>
+<p>我们知道，计算机内存的每个字节都有一个唯一的地址，CPU每次寻址就是通过固定的步长（这就解释了为什么需要内存对齐）来跳跃进行寻址的。举个例子，我们可以把内存看做是一条长街上的一排房屋，每个房屋都有自己固定的门牌号，每座房屋里面都可以容纳数据，为了读取到某个房屋里面的数据，我们必须知道这个房屋的门牌号，根据这个门牌号来打开这个房间，取走数据。同样，计算机也必须为每个内存字节都编上号码，就像门牌号一样，每个字节的编号是唯一的，根据编号可以准确地找到某个字节。</p>
+<h4 id="二指针的本质就是地址"><a class="header" href="#二指针的本质就是地址"><strong>二，指针的本质就是地址</strong></a></h4>
+<p>当我们在程序中声明一个变量并给这个变量赋值的时候，编译器做了什么呢？实际上，变量名代表内存中的一个存储单元，在编译器对程序编译连接的时候由系统给变量分配一个地址：</p>
+<pre><code class="language-cpp">int a = 10;
+</code></pre>
+<p>上面这行代码我们定义并初始化了这个变量a，系统会为a分配一块内存单元，a只是这块内存单元的别名，在程序中从变量中取值，实际上是通过变量名找到相应的内存单元，从其中读取数据。</p>
+<img src="C++学习/C++.media/v2-94eddad728ee414bc95200bbe9334cca_720w-9098341.jpg" alt="img" style="zoom:67%;" />
+<p>假如系统为变量 a 分配的内存地址为0xFF00, 那么我们可以说这个地址就是变量 a 的门牌号。<strong>一个变量的地址称为该变量的指针</strong>。所以说，<strong>指针的本质就是地址，指针变量是一种特殊的变量，它专门保存指针(也即地址)，当我们说这个地址对应的内存单元的时候，我们可以说这个指针指向这块内存单元。</strong></p>
+<p>例如：</p>
+<pre><code class="language-cpp">int a = 10;  
+int* p = &amp;a;  //定义指针变量 p
+*p = 20;      //将指针p指向的值修改为 20
+</code></pre>
+<ul>
+<li>上面两行代码中，我们首先定义了一个整型变量 a ,- </li>
+<li>然后又定义了一个指针变量 p 指向 a .第二行代码中，符号&amp;代表取地址，相当于把变量a的地址赋值给了指针变量p(p指向a)，- </li>
+<li>加在指针变量前面代表解引用，意思找到指针p指向的值，因此，第三行代码的意思就是讲p指向的值也就是a修改为20.<strong>总之一定要记住，符号&amp;代表取值，符号⭐️代表解引用。</strong></li>
+</ul>
+<table><thead><tr><th>符号</th><th>意义</th></tr></thead><tbody>
+<tr><td>&amp;</td><td>取地址</td></tr>
+<tr><td>*</td><td>解引用</td></tr>
+</tbody></table>
+<p>这三行代码的内存模型如下：</p>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/v2-c5ca0796ded98350603aed46799cdffa_720w.jpg" alt="img" /></p>
+<p>我们假设系统给变量 a 分配的内存首地址为2000，我们又声明了一个指针变量p，<strong>这个p也是要占用内存空间的</strong>，只不过这个变量p保存的内容是变量a的地址，也就是2000，当我们想通过p来操纵a的话，首先要根据p保存的地址找到它指向的内容，也就是解引用<em>p，当</em>p的内容放生改变的时候，首地址为2000的内存单元存储的值也会做出改变，因此变量当*p被重新赋值为20的时候，变量a的值也会做出改变，变为20.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+ 
+using namespace std;
+// 要调用上面定义函数的主函数
+int main ()
+{
+   // 一个指向整数的指针
+   int a = 3;
+   int *p;
+   p = &amp;a; 
+   cout &lt;&lt; p &lt;&lt; endl;
+   cout &lt;&lt; *p&lt;&lt; endl;
+   cout &lt;&lt; &amp;p&lt;&lt; endl;
+
+ 
+   return 0;
+}
+//输出结果
+0x16f1874d4
+3
+0x16f1874c8
+</code></pre>
+<p>由此扩展到二级指针，如果我们再定义一个指针变量q来指向p，那么q就是一个二级指针，因为它指向的对象还是一个指针，只不过比他自己低一级，是一级指针,那么二级指针如何定义呢，请看下面的代码：</p>
+<pre><code class="language-cpp">int a = 10;
+int* p = &amp;a;
+int** q = &amp;p; 
+</code></pre>
+<p>上面第三行代码就是定义了一个二级指针q，它指向的是一级指针p，而一级指针p又指向了变量a，它的内存模型如下图所示：</p>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/v2-fe08bdfd089fc437adee0b6abaa70d93_720w.jpg" alt="img" /></p>
+<p>二级指针q保存的内容为一级指针p的地址而非内容，注意p地址是2008，p的内容为2000. 因此对q进行解引用也即q得出的是p,也就是2008,再对(q)进行解引用也即(q)得出的才是变量a的值，由于运算符的结合性自右向左，因此括号可以省略，也即**q才是a的值。</p>
+<h4 id="三一些容易混淆的重要内容"><a class="header" href="#三一些容易混淆的重要内容">三，一些容易混淆的重要内容</a></h4>
+<h5 id="1常量指针与指针常量"><a class="header" href="#1常量指针与指针常量">1、常量指针与指针常量</a></h5>
+<p>请看下面两行代码：</p>
+<pre><code class="language-cpp">int a = 10; //const跟谁挨得近谁就是常量
+const int * p1 = &amp;a;    //常量指针：指向常量的指针变量
+int * const p2 = &amp;a;    //指针常量：指向变量的常量指针
+</code></pre>
+<p>上面第二行代码中的p1是一个常量指针，就是指向常量的指针变量。意味着它指向的值不可以修改，但是指针的指向可以修改：</p>
+<pre><code class="language-cpp">int a = 10;
+int b = 20;
+const int * p1 = &amp;a;    //常量指针
+*p1 = 100;  //错误，常量指针指向的值不可以修改
+p1 = &amp;b;   //正确
+</code></pre>
+<p>而对于指针常量，它本质是一个常量，但是由指针修饰。意味着它指向的值可以修改，但是指针的指向不可修改，与常量指针刚刚相反：</p>
+<pre><code class="language-cpp">int a = 10;
+int b = 20;
+int * const p1 = &amp;a;    //指针常量
+*p1 = 100;  //正确
+p1 = &amp;b;   //错误，指针的指向不可以修改
+</code></pre>
+<p><strong>对照表😀</strong></p>
+<table><thead><tr><th>名称</th><th>意义</th><th>特点</th></tr></thead><tbody>
+<tr><td>const int * p</td><td>常量指针</td><td>指向可修改，指向的值不可修改</td></tr>
+<tr><td>int * const p</td><td>指针常量</td><td>指向不可修改，指向的值可修改</td></tr>
+</tbody></table>
+<h5 id="2指针与数组"><a class="header" href="#2指针与数组">2、指针与数组</a></h5>
+<p>一维数组名本身就是一个指针，但是在使用的过程中要小心，因为这个指针分为指向数组首元素的指针与指向整个数组的指针，那么如何区分它们呢？我们来看下面几行代码：</p>
+<pre><code class="language-cpp">int arr[] = {1, 2, 3, 4, 5};
+int* p1 = arr;
+int* p2 = &amp;arr[0]; //都是默认指向第一个值得地址
+int* p3 = &amp;arr;    //报错
+</code></pre>
+<p>上面三行代码中，其中p1与p2是等价的，因为<strong>数组名arr本身就是一个指针</strong>，**但是这个指针不是指向整个数组，而是指向数组的首元素的地址。**第四行直接报错，因为&amp;arr指的是整个数组的指针，不能把数组指针赋值给整形指针。虽然arr与&amp;arr在数值上是相同的，但是两者意义不同。意味着&amp;arr它的步长为整个数组，而对于arr，步长为单个元素。</p>
+<p>所以，我们得出结论，对于一维数组arr：</p>
+<table><thead><tr><th>名称</th><th>意义</th><th>步长</th></tr></thead><tbody>
+<tr><td>arr</td><td>指向数组首元素</td><td>单个元素</td></tr>
+<tr><td>&amp;arr[0]</td><td>指向数组首元素</td><td>单个元素</td></tr>
+<tr><td>&amp;arr</td><td>指向整个数组</td><td>整个数组</td></tr>
+</tbody></table>
+<p>在定义了指向数组首元素的指针变量后，我们可以通过这个指针变量来访问数组元素：</p>
+<pre><code class="language-cpp"> int arr[] = { 1,2,3,4,5 };
+  int* p1 = arr;
+  int length = sizeof(arr) / sizeof(int);
+  for (int i = 0; i &lt; length; i++)
+  {
+    cout &lt;&lt; p1[i] &lt;&lt; endl; //这里相当于把p1和arr直接画了等号
+    cout &lt;&lt; *(p1 + i) &lt;&lt; endl; //这里则是使用解析引用返回数组中的数值
+  }
+</code></pre>
+<p>上面几行代码中，p1[i]与*(p1+i)两者是等价的，所以输出的结果一样。但是要注意，当用sizeof操作符操作arr的时候，这个时候不能把arr当做一个指针来对待，因为sizeof操作数组的时候它返回的是数组的字节长度，而单个指针变量只占用四个字节。上面循环体中，我们也可以通过下面方式访问：</p>
+<pre><code class="language-cpp">cout &lt;&lt; *p1++ &lt;&lt; endl;  
+cout &lt;&lt; *(p1++) &lt;&lt; endl;
+</code></pre>
+<p><em>p1++与</em>(p1++)是等价的，这是因为++的运算符优先级比<em>要高，因此不管你加不加括号，都会优先执行p++，然而p++是先返回p的值，再与</em>结合，最后p再向后移动一位。</p>
+<p>不过在这里要特别注意，有一种情况下我们是不能通过sizeof操作符来计算数组的长度的，就是当数组名作为函数参数传递的时候：</p>
+<pre><code class="language-cpp">void test(int arr[])
+{
+  int lenth = sizeof(arr) / sizeof(int);
+}
+</code></pre>
+<p>上面这行代码语法上没有问题，但是得出的结果却不是我们想要的结果，为什么呢，这是因为数组名作为函数传递的时候，会退化成一个指针，如果是二维数组的话，会退化成指向一维数组的指针，所以sizeof(arr)计算出来的结果就不是数组的字节长度了。所以说，在c/c++中传递数组的时候，一般我们也会把数组的长度作为形参传递过去。</p>
+<p>但是我们不能通过下面方式去访问数组元素：</p>
+<pre><code class="language-cpp">cout &lt;&lt; *arr++ &lt;&lt; endl;    //报错
+</code></pre>
+<p>这是因为arr本身是一个<strong>指针常量</strong>，指针的指向不可更改，因此编译器直接报错。</p>
+<p><strong>3、数组指针与指针数组</strong></p>
+<p>数组指针顾名思义，本质就是一个指针，这个指针指向整个数组；指针数组本质上是一个数组，但是数组的每个元素都是指针。</p>
+<pre><code class="language-cpp">int (*p2)[10];  //数组指针
+int *p1[10];    //指针数组
+</code></pre>
+<p>上面两行代码，p1是一个数组，而p2却是一个指针，它指向一个匿名数组。为什么是这样呢？这是因为[]的优先级比*要高。p1 先与[]结合，构成一个数组的定义，数组名为p1，int *修饰的是数组的内容，即数组的每个元素。那现在我们清楚，这是一个数组，其包含10 个指向int 类型数据的指针，即指针数组。至于p2 就更好理解了，在这里括号的优先级比[]高，*号和p2 构成一个指针的定义，指针变量名为p2，int 修饰的是数组的内容，即数组的每个元素。数组在这里并没有名字，是个匿名数组。那现在我们清楚p2 是一个指针，它指向一个包含10 个int 类型数据的数组，即数组指针。</p>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/v2-0748696dcdccff7cd64082d2c53d6293_1440w-9105157.jpg" alt="img" /></p>
+<p>p1为数组名，每个元素都是int型指针</p>
+<p><img src="C++%E5%AD%A6%E4%B9%A0/C++.media/v2-30e1d5983c4feea1f2e8b2866f61c9da_1440w.jpg" alt="img" /></p>
+<p>p2为指针变量，指向一个匿名数组</p>
+<p>如果我们定义： </p>
+<pre><code class="language-cpp">int(*p)[10] = &amp;arr;
+</code></pre>
+<p>那么如何访问数组的元素呢？且看，由于上行代码中，p=&amp;arr，那么对其解引用，*p就是arr，因此我们可以通过(*p)[]来进行访问数组的元素： </p>
+<pre><code class="language-cpp">for(int i = 0; i &lt; 10; i++)
+{
+  cout&lt;&lt; (*p)[i] &lt;&lt; endl;
+}
+</code></pre>
+<h5 id="4指针函数与函数指针"><a class="header" href="#4指针函数与函数指针"><strong>4、指针函数与函数指针</strong></a></h5>
+<p>指针函数顾名思义，他是一个函数，但返回值是一个指针，例如下面这几行代码：</p>
+<pre><code class="language-cpp">int* test()
+{
+  int a = 10;
+  int* p = &amp;a;
+  return p;
+}
+</code></pre>
+<p>这个test就是一个指针函数，它返回的是一个int型的指针。</p>
+<p>函数指针本质是一个指针，这个指针指向一个函数，那么我们如何定义函数指针呢？请看下面代码：</p>
+<pre><code class="language-cpp">int myAdd(int a, int b)
+{
+  return a + b;
+}
+void test()
+{
+  int(*pFun)(int, int) = myAdd;    //定义一个函数指针，（）增加了优先级以便可以构成指针结构
+  cout &lt;&lt; (*pFun)(2, 5) &lt;&lt; endl;    //用函数指针调用函数
+  cout &lt;&lt; pFun(2, 5) &lt;&lt; endl;      //用函数指针调用函数
+}
+</code></pre>
+<p>一个巨复杂的例子🌰：</p>
+<pre><code class="language-cpp">char *(* c[10])(int **p);
+</code></pre>
+<p>乍一看，让人眼花缭乱，不知道是什么东西，在这里请大家记住一个规则：C语言标准规定，对于一个符号的定义，编译器总是从它的名字开始读取，然后按照优先级顺序依次解析。注意是从名字开始，不是从开头也不是从末尾，这是理解复杂指针的关键。</p>
+<p>有了上面的规则，我们来逐步剖析上面哪行代码的意义：</p>
+<p>首先从*c[10]开始，由于[]的优先级比*高，因此，*c[10]代表一个指针数组，每个元素都是指针，但类型还不知道。再看右边的(int** p)，它是一个函数，参数为一个二级指针。最左边char* 代表这个函数的返回类型。因此，整行代码的含义就是：c 是一个拥有 10 个元素的指针数组，数组每个元素指向一个原型为char *(int **p)的函数。</p>
+<h2 id="c-引用"><a class="header" href="#c-引用">C++ 引用</a></h2>
+<p>引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量。</p>
+<p>引用<strong>很容易与指针混淆</strong>，它们之间有三个主要的不同：</p>
+<ul>
+<li>不存在空引用。引用必须连接到一块合法的内存。</li>
+<li>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</li>
+<li>引用必须在创建时被初始化。指针可以在任何时间被初始化。</li>
+</ul>
+<p>一个例子🌰</p>
+<p>例如：</p>
+<pre><code class="language-cpp">int    i = 17;
+</code></pre>
+<p>我们可以为 i 声明引用变量，如下所示：</p>
+<pre><code class="language-cpp">int&amp;    r = i;
+</code></pre>
+<p>在这些声明中，&amp; 读作<strong>引用</strong>。因此，第一个声明可以读作 &quot;r 是一个初始化为 i 的整型引用&quot;，第二个声明可以读作 &quot;s 是一个初始化为 d 的 double 型引用&quot;。下面的实例使用了 int 和 double 引用：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+ 
+using namespace std;
+ 
+int main ()
+{
+   // 声明简单的变量
+   int    i;
+   double d;
+ 
+   // 声明引用变量
+   int&amp;    r = i;
+   double&amp; s = d;
+   
+   i = 5;
+   cout &lt;&lt; &quot;Value of i : &quot; &lt;&lt; i &lt;&lt; endl;
+   cout &lt;&lt; &quot;Value of i reference : &quot; &lt;&lt; r  &lt;&lt; endl;
+ 
+   d = 11.7;
+   cout &lt;&lt; &quot;Value of d : &quot; &lt;&lt; d &lt;&lt; endl;
+   cout &lt;&lt; &quot;Value of d reference : &quot; &lt;&lt; s  &lt;&lt; endl;
+   
+   return 0;
+}
+</code></pre>
 
                     </main>
 
