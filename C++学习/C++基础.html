@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>C++学习</title>
+        <title>C++基础</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Homepage</a></li><li class="chapter-item expanded affix "><a href="../shell/shell编程.html">shell 编程</a></li><li class="chapter-item expanded affix "><a href="../C++学习/C++.html" class="active">C++学习</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Homepage</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../shell/shell编程.html">shell 编程</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../C++学习/C++基础.html" class="active">C++学习</a></li><li class="chapter-item expanded "><a href="../C++学习/C++基础.html" class="active"><strong aria-hidden="true">1.</strong> C++基础</a></li><li class="chapter-item expanded "><a href="../C++学习/C++进阶.html"><strong aria-hidden="true">2.</strong> C++进阶</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -2157,7 +2157,8 @@ void test()
 <p>乍一看，让人眼花缭乱，不知道是什么东西，在这里请大家记住一个规则：C语言标准规定，对于一个符号的定义，编译器总是从它的名字开始读取，然后按照优先级顺序依次解析。注意是从名字开始，不是从开头也不是从末尾，这是理解复杂指针的关键。</p>
 <p>有了上面的规则，我们来逐步剖析上面哪行代码的意义：</p>
 <p>首先从*c[10]开始，由于[]的优先级比*高，因此，*c[10]代表一个指针数组，每个元素都是指针，但类型还不知道。再看右边的(int** p)，它是一个函数，参数为一个二级指针。最左边char* 代表这个函数的返回类型。因此，整行代码的含义就是：c 是一个拥有 10 个元素的指针数组，数组每个元素指向一个原型为char *(int **p)的函数。</p>
-<h2 id="c-引用"><a class="header" href="#c-引用">C++ 引用</a></h2>
+<h2 id="c-引用理解成一种特殊的指针"><a class="header" href="#c-引用理解成一种特殊的指针">C++ 引用（理解成一种特殊的指针）</a></h2>
+<h4 id="1基本定义"><a class="header" href="#1基本定义">1、基本定义</a></h4>
 <p>引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量。</p>
 <p>引用<strong>很容易与指针混淆</strong>，它们之间有三个主要的不同：</p>
 <ul>
@@ -2197,7 +2198,430 @@ int main ()
    
    return 0;
 }
+//输出结果
+Value of i : 5
+Value of i reference : 5
+Value of d : 11.7
+Value of d reference : 11.7
 </code></pre>
+<h4 id="2把引用作为函数参数"><a class="header" href="#2把引用作为函数参数">2、把引用作为函数参数</a></h4>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+// 函数声明
+void swap(int&amp; x, int&amp; y);
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 100;
+   int b = 200;
+ 
+   cout &lt;&lt; &quot;交换前，a 的值：&quot; &lt;&lt; a &lt;&lt; endl;
+   cout &lt;&lt; &quot;交换前，b 的值：&quot; &lt;&lt; b &lt;&lt; endl;
+ 
+   /* 调用函数来交换值 */
+   swap(a, b);
+ 
+   cout &lt;&lt; &quot;交换后，a 的值：&quot; &lt;&lt; a &lt;&lt; endl;
+   cout &lt;&lt; &quot;交换前，b 的值：&quot; &lt;&lt; b &lt;&lt; endl;
+ 
+   return 0;
+}
+ 
+// 函数定义
+void swap(int&amp; x, int&amp; y)
+{
+   int temp;
+   temp = x; /* 保存地址 x 的值 */
+   x = y;    /* 把 y 赋值给 x */
+   y = temp; /* 把 x 赋值给 y  */
+  
+   return;
+}
+//输出结果
+交换前，a 的值： 100
+交换前，b 的值： 200
+交换后，a 的值： 200
+交换后，b 的值： 100
+</code></pre>
+<h4 id="3把引用作为函数返回值"><a class="header" href="#3把引用作为函数返回值">3、把引用作为函数返回值</a></h4>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+ 
+using namespace std;
+ 
+double vals[] = {10.1, 12.6, 33.1, 24.1, 50.0};
+ 
+double&amp; setValues( int i )
+{
+  return vals[i];   // 返回第 i 个元素的引用
+}
+ 
+// 要调用上面定义函数的主函数
+int main ()
+{
+ 
+   cout &lt;&lt; &quot;改变前的值&quot; &lt;&lt; endl;
+   for ( int i = 0; i &lt; 5; i++ )
+   {
+       cout &lt;&lt; &quot;vals[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+       cout &lt;&lt; vals[i] &lt;&lt; endl;
+   }
+ 
+   setValues(1) = 20.23; // 改变第 2 个元素
+   setValues(3) = 70.8;  // 改变第 4 个元素
+ 
+   cout &lt;&lt; &quot;改变后的值&quot; &lt;&lt; endl;
+   for ( int i = 0; i &lt; 5; i++ )
+   {
+       cout &lt;&lt; &quot;vals[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot;;
+       cout &lt;&lt; vals[i] &lt;&lt; endl;
+   }
+   return 0;
+}
+//输出结果
+改变前的值
+vals[0] = 10.1
+vals[1] = 12.6
+vals[2] = 33.1
+vals[3] = 24.1
+vals[4] = 50
+改变后的值
+vals[0] = 10.1
+vals[1] = 20.23
+vals[2] = 33.1
+vals[3] = 70.8
+vals[4] = 50
+</code></pre>
+<p><strong>当返回一个引用时，要注意被引用的对象不能超出作用域</strong>。所以返回一个对局部变量的引用是不合法的，但是，可以返回一个对静态变量的引用。</p>
+<pre><code class="language-C++">int&amp; func() {
+   int q;
+   //! return q; // 在编译时发生错误
+   static int x;
+   return x;     // 安全，x 在函数作用域外依然是有效的
+}
+</code></pre>
+<h2 id="c-基本的输入输出"><a class="header" href="#c-基本的输入输出">C++ 基本的输入输出</a></h2>
+<p>C++ 的 I/O 发生在流中，流是字节序列。如果字节流是从设备（如键盘、磁盘驱动器、网络连接等）流向内存，这叫做<strong>输入操作</strong>。如果字节流是从内存流向设备（如显示屏、打印机、磁盘驱动器、网络连接等），这叫做<strong>输出操作</strong>。</p>
+<h4 id="1io-库头文件"><a class="header" href="#1io-库头文件">1、I/O 库头文件</a></h4>
+<p>下列的头文件在 C++ 编程中很重要。</p>
+<table><thead><tr><th align="left">头文件</th><th align="left">函数和描述</th></tr></thead><tbody>
+<tr><td align="left"><iostream></td><td align="left">该文件定义了 <strong>cin、cout、cerr</strong> 和 <strong>clog</strong> 对象，分别对应于标准输入流、标准输出流、非缓冲标准错误流和缓冲标准错误流。</td></tr>
+<tr><td align="left"><iomanip></td><td align="left">该文件通过所谓的参数化的流操纵器（比如 <strong>setw</strong> 和 <strong>setprecision</strong>），来声明对执行标准化 I/O 有用的服务。</td></tr>
+<tr><td align="left"><fstream></td><td align="left">该文件为用户控制的文件处理声明服务。我们将在文件和流的相关章节讨论它的细节。</td></tr>
+</tbody></table>
+<h4 id="2标准输出流cout"><a class="header" href="#2标准输出流cout">2、标准输出流（cout）</a></h4>
+<p>预定义的对象 <strong>cout</strong> 是 <strong>ostream</strong> 类的一个实例。cout 对象&quot;连接&quot;到标准输出设备，通常是显示屏。<strong>cout</strong> 是与流插入运算符 &lt;&lt; 结合使用的，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main( )
+{
+   char str[] = &quot;Hello C++&quot;;
+   cout &lt;&lt; &quot;Value of str is : &quot; &lt;&lt; str &lt;&lt; endl; 
+} 
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code class="language-C++">Value of str is : Hello C++
+</code></pre>
+<p>C++ 编译器根据要输出变量的数据类型，选择合适的流插入运算符来显示值。&lt;&lt; 运算符被重载来输出内置类型（整型、浮点型、double 型、字符串和指针）的数据项。</p>
+<p>==流插入运算符 &lt;&lt;== 在一个语句中可以多次使用，如上面实例中所示，<strong>endl</strong> 用于在行末添加一个换行符。</p>
+<h4 id="3标准输入流cin"><a class="header" href="#3标准输入流cin">3、标准输入流（cin)</a></h4>
+<p>预定义的对象 <strong>cin</strong> 是 <strong>istream</strong> 类的一个实例。cin 对象附属到标准输入设备，通常是键盘。<strong>cin</strong> 是与==流提取运算符 &gt;&gt;== 结合使用的，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main( )
+{
+    char name[50];
+    int age;
+    cout &lt;&lt; &quot;请输入您的名称： &quot;;
+    cin &gt;&gt; name;
+    cout &lt;&lt; &quot;您的名称是： &quot; &lt;&lt; name &lt;&lt; endl;   
+    cout &lt;&lt;&quot;请输入年龄&quot;;
+    cin &gt;&gt; age;
+    if (age &gt; 10){
+      cout &lt;&lt; &quot;your age is older than 10&quot;;
+    }else{
+      cout &lt;&lt; &quot;your are so young&quot;;
+    }
+} 
+</code></pre>
+<p>C++ 编译器根据要输入值的数据类型，选择合适的流提取运算符来提取值，并把它存储在给定的变量中。</p>
+<p>流提取运算符 &gt;&gt; 在一个语句中可以多次使用，如果要求输入多个数据，可以使用如下语句：</p>
+<pre><code class="language-C++">cin &gt;&gt; name &gt;&gt; age;
+</code></pre>
+<p>这相当于下面两个语句：</p>
+<pre><code class="language-c++">cin &gt;&gt; name;
+cin &gt;&gt; age;
+</code></pre>
+<h4 id="4标准错误流cerr"><a class="header" href="#4标准错误流cerr">4、标准错误流（cerr)</a></h4>
+<p>预定义的对象 <strong>cerr</strong> 是 <strong>ostream</strong> 类的一个实例。cerr 对象附属到标准错误设备，通常也是显示屏，但是 <strong>cerr</strong> 对象是非缓冲的，且每个流插入到 cerr 都会立即输出。</p>
+<p><strong>cerr</strong> 也是与流插入运算符 &lt;&lt; 结合使用的，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main( )
+{
+   char str[] = &quot;Unable to read....&quot;;
+   cerr &lt;&lt; &quot;Error message : &quot; &lt;&lt; str &lt;&lt; endl; 
+} 
+</code></pre>
+<h4 id="5标准日志流clog"><a class="header" href="#5标准日志流clog">5、标准日志流（clog)</a></h4>
+<p>预定义的对象 <strong>clog</strong> 是 <strong>ostream</strong> 类的一个实例。clog 对象附属到标准错误设备，通常也是显示屏，但是 <strong>clog</strong> 对象是缓冲的。这意味着每个流插入到 clog 都会先存储在缓冲区中，直到缓冲填满或者缓冲区刷新时才会输出。</p>
+<p><strong>clog</strong> 也是与流插入运算符 &lt;&lt; 结合使用的，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main( )
+{
+   char str[] = &quot;Unable to read....&quot;;
+   clog &lt;&lt; &quot;Error message : &quot; &lt;&lt; str &lt;&lt; endl;
+} 
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code class="language-C++">Error message : Unable to read....
+</code></pre>
+<h2 id="c-数据结构"><a class="header" href="#c-数据结构">C++ 数据结构</a></h2>
+<p>C/C++ 数组允许定义可存储相同类型数据项的变量，但是<strong>结构是 C++ 中另一种用户自定义的可用的数据类型，它允许您存储不同类型的数据项。</strong></p>
+<p>结构用于表示一条记录，假设您想要跟踪图书馆中书本的动态，您可能需要跟踪每本书的下列属性：</p>
+<ul>
+<li>Title</li>
+<li>Author</li>
+<li>Subject</li>
+<li>Book ID</li>
+</ul>
+<h4 id="1数据结构的定义"><a class="header" href="#1数据结构的定义">1、数据结构的定义</a></h4>
+<p>为了定义结构，您必须使用 <strong>struct</strong> 语句。struct 语句定义了一个包含多个成员的新的数据类型，struct 语句的格式如下：</p>
+<pre><code class="language-C++">struct [structure tag]
+{
+   member definition;
+   member definition;
+   ...
+   member definition;
+} [one or more structure variables];  
+</code></pre>
+<p><strong>structure tag</strong> 是可选的，每个 member definition 是标准的变量定义，比如 int i; 或者 float f; 或者其他有效的变量定义。在结构定义的末尾，最后一个分号之前，您可以指定一个或多个结构变量，这是可选的。下面是声明 Book 结构的方式：</p>
+<pre><code class="language-C++">struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+}book; //分号必不可少
+// 这里的book相当于在定义struct的同时就默认初始化了一个变量book
+</code></pre>
+<blockquote>
+<p>感觉类似于python中的创建一个空的类 用于储存数据一样</p>
+</blockquote>
+<p>对结构变量可以在定义时初始化。方法是：
+在花括号中顺序填入结构中的（数据）成员的初始值：</p>
+<pre><code class="language-C++">Books book1 = {&quot;bookname&quot;,&quot;me&quot;,&quot;science&quot;,&quot;1000101&quot;}
+</code></pre>
+<p>此外值得注意：</p>
+<pre><code class="language-C++">//该结构可以嵌套
+struct mail
+{
+       char address[30] ; //地址
+       long int zip ; //邮政编码
+       long int telenum ; //电话号码
+};
+ 
+struct employee
+{
+       char name[25] ; //员工姓名
+       mail addinfo ; //结构变量作为成员，嵌套
+       double salary ; //工资
+};
+//访问结构变量的结构成员的方法：用连续点号来访问结构变量的结构成员。例如有程序段：
+employee emp1={“朱明”,“四牌楼2号”,210096,83792666,2430.0};//因为存在结构嵌套，因此多了好几个初始化需要添加的参数
+cout&lt;&lt;emp1.addinfo.telenum&lt;&lt;endl;
+</code></pre>
+<h4 id="2访问结构成员"><a class="header" href="#2访问结构成员">2、访问结构成员</a></h4>
+<p>为了访问结构的成员，我们使用<strong>成员访问运算符（.）</strong>。成员访问运算符是结构变量名称和我们要访问的结构成员之间的一个句号。您可以使用 <strong>struct</strong> 关键字来定义结构类型的变量。下面的实例演示了结构的用法：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+ 
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( )
+{
+   struct Books Book1;        // 声明 Book1，类型为 Book
+   struct Books Book2;        // 声明 Book2，类型为 Book
+ 
+   // Book1 详述
+   strcpy( Book1.title, &quot;Learn C++ Programming&quot;);
+   strcpy( Book1.author, &quot;Chand Miyan&quot;); 
+   strcpy( Book1.subject, &quot;C++ Programming&quot;);
+   Book1.book_id = 6495407;
+
+   // Book2 详述
+   strcpy( Book2.title, &quot;Telecom Billing&quot;);
+   strcpy( Book2.author, &quot;Yakit Singha&quot;);
+   strcpy( Book2.subject, &quot;Telecom&quot;);
+   Book2.book_id = 6495700;
+ 
+   // 输出 Book1 信息
+   cout &lt;&lt; &quot;Book 1 title : &quot; &lt;&lt; Book1.title &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 1 author : &quot; &lt;&lt; Book1.author &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 1 subject : &quot; &lt;&lt; Book1.subject &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 1 id : &quot; &lt;&lt; Book1.book_id &lt;&lt;endl;
+
+   // 输出 Book2 信息
+   cout &lt;&lt; &quot;Book 2 title : &quot; &lt;&lt; Book2.title &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 2 author : &quot; &lt;&lt; Book2.author &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 2 subject : &quot; &lt;&lt; Book2.subject &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book 2 id : &quot; &lt;&lt; Book2.book_id &lt;&lt;endl;
+
+   return 0;
+}
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code>Book 1 title : Learn C++ Programming
+Book 1 author : Chand Miyan
+Book 1 subject : C++ Programming
+Book 1 id : 6495407
+Book 2 title : Telecom Billing
+Book 2 author : Yakit Singha
+Book 2 subject : Telecom
+Book 2 id : 6495700
+</code></pre>
+<h4 id="3结构作为函数参数"><a class="header" href="#3结构作为函数参数">3、结构作为函数参数</a></h4>
+<p>您可以把结构作为函数参数，传参方式与其他类型的变量或指针类似。您可以使用上面实例中的方式来访问结构变量：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+void printBook( struct Books book );
+
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( )
+{
+   struct Books Book1;        // 声明 Book1，类型为 Book
+   struct Books Book2;        // 声明 Book2，类型为 Book
+ 
+   // Book1 详述
+   strcpy( Book1.title, &quot;Learn C++ Programming&quot;);
+   strcpy( Book1.author, &quot;Chand Miyan&quot;); 
+   strcpy( Book1.subject, &quot;C++ Programming&quot;);
+   Book1.book_id = 6495407;
+
+   // Book2 详述
+   strcpy( Book2.title, &quot;Telecom Billing&quot;);
+   strcpy( Book2.author, &quot;Yakit Singha&quot;);
+   strcpy( Book2.subject, &quot;Telecom&quot;);
+   Book2.book_id = 6495700;
+ 
+   // 输出 Book1 信息
+   printBook( Book1 );
+
+   // 输出 Book2 信息
+   printBook( Book2 );
+
+   return 0;
+}
+void printBook( struct Books book )
+{
+   cout &lt;&lt; &quot;Book title : &quot; &lt;&lt; book.title &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book author : &quot; &lt;&lt; book.author &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book subject : &quot; &lt;&lt; book.subject &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book id : &quot; &lt;&lt; book.book_id &lt;&lt;endl;
+}
+</code></pre>
+<h4 id="4指向结构的指针"><a class="header" href="#4指向结构的指针">4、指向结构的指针</a></h4>
+<p>您可以定义指向结构的指针，方式与定义指向其他类型变量的指针相似，如下所示：</p>
+<pre><code class="language-C++">struct Books *struct_pointer;
+</code></pre>
+<p>现在，您可以在上述定义的指针变量中存储结构变量的地址。为了查找结构变量的地址，请把 &amp; 运算符放在结构名称的前面，如下所示：</p>
+<pre><code class="language-c++">struct_pointer = &amp;Book1;
+</code></pre>
+<p>为了使用指向该结构的指针访问结构的成员，您必须使用 -&gt; 运算符，如下所示：</p>
+<pre><code class="language-c++">struct_pointer -&gt; title;
+</code></pre>
+<p>一个具体的例子🌰：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+void printBook( struct Books *book );
+
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( )
+{
+   struct Books Book1;        // 声明 Book1，类型为 Book
+   struct Books Book2;        // 声明 Book2，类型为 Book */
+ 
+   // Book1 详述
+   strcpy( Book1.title, &quot;Learn C++ Programming&quot;);
+   strcpy( Book1.author, &quot;Chand Miyan&quot;); 
+   strcpy( Book1.subject, &quot;C++ Programming&quot;);
+   Book1.book_id = 6495407;
+
+   // Book2 详述
+   strcpy( Book2.title, &quot;Telecom Billing&quot;);
+   strcpy( Book2.author, &quot;Yakit Singha&quot;);
+   strcpy( Book2.subject, &quot;Telecom&quot;);
+   Book2.book_id = 6495700;
+ 
+   // 通过传 Book1 的地址来输出 Book1 信息
+   printBook( &amp;Book1 ); //就相当于在函数定义时在此处声明了一个指针，然后在函数调用的时候直接将地址值赋给这个指针。
+
+   // 通过传 Book2 的地址来输出 Book2 信息
+   printBook( &amp;Book2 );
+
+   return 0;
+}
+// 该函数以结构指针作为参数
+void printBook( struct Books *book )
+{
+   cout &lt;&lt; &quot;Book title : &quot; &lt;&lt; book-&gt;title &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book author : &quot; &lt;&lt; book-&gt;author &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book subject : &quot; &lt;&lt; book-&gt;subject &lt;&lt;endl;
+   cout &lt;&lt; &quot;Book id : &quot; &lt;&lt; book-&gt;book_id &lt;&lt;endl;
+} 
+</code></pre>
+<h4 id="5typedef关键字"><a class="header" href="#5typedef关键字">5、typedef关键字</a></h4>
+<p>下面是一种更简单的定义结构的方式，您可以为创建的类型取一个&quot;别名&quot;。例如：</p>
+<pre><code class="language-c++">typedef struct
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+}Books;
+</code></pre>
+<p>现在，您可以直接使用 <em>Books</em> 来定义 <em>Books</em> 类型的变量，而不需要使用 struct 关键字。下面是实例：</p>
+<pre><code class="language-c++">Books Book1, Book2;
+</code></pre>
+<p>您可以使用 <strong>typedef</strong> 关键字来定义非结构类型，如下所示：</p>
+<pre><code class="language-c++">typedef long int *pint32;
+ 
+pint32 x, y, z;
+</code></pre>
+<p>x, y 和 z 都是指向长整型 long int 的指针。</p>
 
                     </main>
 
@@ -2207,6 +2631,9 @@ int main ()
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
+                                                    <a rel="next" href="../C++学习/C++基础.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -2218,6 +2645,9 @@ int main ()
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
+                                    <a rel="next" href="../C++学习/C++基础.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
