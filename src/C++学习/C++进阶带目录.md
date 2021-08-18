@@ -1,10 +1,28 @@
-# C++ 类 & 对象
+<a name="index">**Index**</a>
+
+<a href="#0">C++ 类 & 对象</a>  
+&emsp;&emsp;<a href="#1">一、C++类的定义</a>  
+&emsp;&emsp;<a href="#2">二、C++定义对象（类似于python中的类的实例化）</a>  
+&emsp;&emsp;&emsp;<a href="#3">访问数据成员</a>  
+&emsp;&emsp;<a href="#4">三、类 & 对象详解</a>  
+&emsp;&emsp;&emsp;<a href="#5">1、类的成员函数</a>  
+&emsp;&emsp;&emsp;<a href="#6">2、类访问修饰符</a>  
+&emsp;&emsp;&emsp;<a href="#7">3、构造函数与析构函数</a>  
+&emsp;&emsp;&emsp;<a href="#8"> 4、C++拷贝构造函数</a>  
+&emsp;&emsp;&emsp;<a href="#9"> 5、C++友元函数(相当于给开后门，给某些函数特定权利可以访问私有资源)</a>  
+&emsp;&emsp;&emsp;<a href="#10">6、内联函数</a>  
+&emsp;&emsp;&emsp;<a href="#11">7、C++ this指针</a>  
+&emsp;&emsp;&emsp;<a href="#12">8、指向类的指针</a>  
+&emsp;&emsp;&emsp;<a href="#13">9、C++类的静态成员</a>  
+&emsp;&emsp;&emsp;<a href="#14">10、静态函数成员</a>  
+
+# <a name="0">C++ 类 & 对象</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 C++ 在 C 语言的基础上增加了面向对象编程，C++ 支持面向对象程序设计。类是 C++ 的核心特性，通常被称为用户定义的类型。
 
 类用于指定对象的形式，它包含了数据表示法和用于处理数据的方法。类中的数据和方法称为类的成员。函数在一个类被称为类的成员。
 
-### 一、C++类的定义
+### <a name="1">一、C++类的定义</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 类定义是以关键字 **class** 开头，后跟类的名称。类的主体是包含在一对花括号中。类定义后必须跟着一个分号或一个声明列表。例如，我们使用关键字 **class** 定义 Box 数据类型，如下所示：
 
@@ -20,7 +38,7 @@ class Box
 
 关键字 **public** 确定了类成员的访问属性。在类对象作用域内，公共成员在类的外部是可访问的。您也可以指定类的成员为 **private** 或 **protected**，这个后面会展开介绍。
 
-### 二、C++定义对象（类似于python中的类的实例化）
+### <a name="2">二、C++定义对象（类似于python中的类的实例化）</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 类提供了对象的蓝图，所以基本上，对象是根据类来创建的。声明类的对象，就像声明基本类型的变量一样。下面的语句声明了类 Box 的两个对象：
 
@@ -31,7 +49,7 @@ Box Box2;          // 声明 Box2，类型为 Box
 
 Box1和Box2都有属于他们各自的数据成员
 
-#### 访问数据成员
+#### <a name="3">访问数据成员</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 类的对象的公共数据成员可以使用**直接成员访问运算符 (.)** 来访问。为了更好地理解这些概念，让我们尝试一下下面的实例：
 
@@ -77,7 +95,7 @@ int main( )
 
 **需要注意的是，私有的成员和受保护的成员不能使用直接成员访问运算符 (.) 来直接访问。**
 
-### 三、类 & 对象详解
+### <a name="4">三、类 & 对象详解</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 到目前为止，我们已经对 C++ 的类和对象有了基本的了解。下面的列表中还列出了其他一些 C++ 类和对象相关的概念，可以点击相应的链接进行学习。
 
@@ -93,7 +111,7 @@ int main( )
 | [C++ 中指向类的指针](https://www.w3cschool.cn/cpp/cpp-pointer-to-class.html) | 指向类的指针方式如同指向结构的指针。实际上，类可以看成是一个带有函数的结构。 |
 | [C++ 类的静态成员](https://www.w3cschool.cn/cpp/cpp-static-members.html) | 类的数据成员和函数成员都可以被声明为静态的。                 |
 
-#### 1、类的成员函数
+#### <a name="5">1、类的成员函数</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 ​	类的成员函数是指那些把定义和原型写在类定义内部的函数，就像类定义中的其他变量一样。类成员函数是类的一个成员，它可以操作类的任意对象，可以访问对象中的所有成员。
 
@@ -213,7 +231,7 @@ int main( )
 }
 ```
 
-#### 2、类访问修饰符
+#### <a name="6">2、类访问修饰符</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 ​	数据隐藏是面向对象编程的一个重要特点，它防止函数直接访问类类型的内部成员。类成员的访问限制是通过在类主体内部对各个区域标记 **public、private、protected** 来指定的。关键字 public、private、protected 称为访问说明符。
 
@@ -390,7 +408,7 @@ class Base{
   }
   ```
 
-  #### 3、构造函数与析构函数
+  #### <a name="7">3、构造函数与析构函数</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   **类的构造函数：**类的**构造函数**是类的一种特殊的成员函数，它会在每次创建类的新对象时执行。构造函数的名称与类的名称是完全相同的，并且不会返回任何类型，也不会返回 void。构造函数可用于为某些成员变量设置初始值。✅（在这里可以类比与python中的init函数
 
@@ -577,7 +595,7 @@ class Base{
   
   ```
 
-  #### 3、C++拷贝构造函数
+  #### <a name="8">3、C++拷贝构造函数</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   问题？(O_O)?  什么是拷贝构造函数？？？？
 
@@ -590,7 +608,7 @@ class Base{
 
   类的乱七八糟看不懂，跳过回头填坑
 
-  #### 4、C++友元函数(相当于给开后门，给某些函数特定权利可以访问私有资源)
+  #### <a name="9">4、C++友元函数(相当于给开后门，给某些函数特定权利可以访问私有资源)</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   **类的友元函数是定义在类外部，但有权访问类的所有私有（private）成员和保护（protected）成员。**尽管友元函数的原型有在类的定义中出现过，但是友元函数并不是成员函数。
 
@@ -653,7 +671,7 @@ class Base{
   
   ```
 
-  #### 5、内联函数
+  #### <a name="10">5、内联函数</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   一般的函数有一个潜在的缺点：调用函数比求解等价表达式要慢得多。在大多数的机器上，调用函数都要做很多工作：调用前要先保存寄存器，并在返回时恢复，复制实参，程序还必须转向一个新位置执行。
 
@@ -701,7 +719,7 @@ class Base{
 
   ✅：**也就是说内敛函数相当于是对传统函数的改造，在定义时需要在其开头位置添加inline符号，该类函数在执行过程中相当于不需要像传统函数使用时老需要寄存调用，直接将代码复制到各个需要调用的地方**
 
-  #### 6、C++ this指针
+  #### <a name="11">6、C++ this指针</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   在 C++ 中，每一个对象都能通过 **this** 指针来访问自己的地址。**this** 指针是所有成员函数的隐含参数。因此，在成员函数内部，它可以用来指向调用对象。
 
@@ -758,7 +776,7 @@ class Base{
   Box2 is equal to or larger than Box1
   ```
 
-  #### 7、指向类的指针
+  #### <a name="12">7、指向类的指针</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   一个指向 C++ 类的指针与指向结构的指针类似，访问指向类的指针的成员，需要使用成员访问运算符 **->**，就像访问指向结构的指针一样。与所有的指针一样，您必须在使用指针之前，对指针进行初始化。
 
@@ -815,7 +833,7 @@ class Base{
   Volume of Box2: 102
   ```
 
-  #### 8、C++类的静态成员
+  #### <a name="13">8、C++类的静态成员</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   我们可以使用 **static** 关键字来把类成员定义为静态的。当我们声明类的成员为静态时，这意味着无论创建多少个类的对象，静态成员都只有一个副本。
 
@@ -872,7 +890,7 @@ class Base{
   //这里static的意思就是不管怎么搞，怎么实例化，大家各个实例之间都是用同一个参数，也就是说他不属于任何一个特定的个体实例化，而是级别更高直属于类本身的，所以访问符号也从.变为了::
   ```
 
-  #### 9、静态函数成员
+  #### <a name="14">9、静态函数成员</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
   如果把函数成员声明为静态的，就可以把函数与类的任何特定对象独立开来。静态成员函数即使在类对象不存在的情况下也能被调用，**静态函数**只要使用类名加范围解析运算符 **::** 就可以访问。
 
