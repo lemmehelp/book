@@ -5466,22 +5466,37 @@ void printBook( struct Books *book )
 pint32 x, y, z;
 </code></pre>
 <p>x, y 和 z 都是指向长整型 long int 的指针。</p>
-<div style="break-before: page; page-break-before: always;"></div><p><a name="index"><strong>Index</strong></a></p>
-<p><a href="C++学习/C++进阶带目录.html#0">C++ 类 &amp; 对象</a><br />
+<div style="break-before: page; page-break-before: always;"></div><p><a name="index"><strong>Index</strong></a>
+<a href="C++学习/C++进阶带目录.html#0">C++ 类 &amp; 对象</a><br />
   <a href="C++学习/C++进阶带目录.html#1">一、C++类的定义</a><br />
   <a href="C++学习/C++进阶带目录.html#2">二、C++定义对象（类似于python中的类的实例化）</a><br />
    <a href="C++学习/C++进阶带目录.html#3">访问数据成员</a><br />
   <a href="C++学习/C++进阶带目录.html#4">三、类 &amp; 对象详解</a><br />
    <a href="C++学习/C++进阶带目录.html#5">1、类的成员函数</a><br />
    <a href="C++学习/C++进阶带目录.html#6">2、类访问修饰符</a><br />
-   <a href="C++学习/C++进阶带目录.html#7">3、构造函数与析构函数</a><br />
-   <a href="C++学习/C++进阶带目录.html#8"> 4、C++拷贝构造函数</a><br />
-   <a href="C++学习/C++进阶带目录.html#9"> 5、C++友元函数(相当于给开后门，给某些函数特定权利可以访问私有资源)</a><br />
-   <a href="C++学习/C++进阶带目录.html#10">6、内联函数</a><br />
-   <a href="C++学习/C++进阶带目录.html#11">7、C++ this指针</a><br />
-   <a href="C++学习/C++进阶带目录.html#12">8、指向类的指针</a><br />
-   <a href="C++学习/C++进阶带目录.html#13">9、C++类的静态成员</a><br />
-   <a href="C++学习/C++进阶带目录.html#14">10、静态函数成员</a></p>
+   <a href="C++学习/C++进阶带目录.html#7"># 3、构造函数与析构函数</a><br />
+   <a href="C++学习/C++进阶带目录.html#8"># 3、C++拷贝构造函数</a><br />
+   <a href="C++学习/C++进阶带目录.html#9"># 4、C++友元函数(相当于给开后门，给某些函数特定权利可以访问私有资源)</a><br />
+   <a href="C++学习/C++进阶带目录.html#10"># 5、内联函数</a><br />
+   <a href="C++学习/C++进阶带目录.html#11"># 6、C++ this指针</a><br />
+   <a href="C++学习/C++进阶带目录.html#12"># 7、指向类的指针</a><br />
+   <a href="C++学习/C++进阶带目录.html#13"># 8、C++类的静态成员</a><br />
+   <a href="C++学习/C++进阶带目录.html#14"># 9、静态函数成员</a><br />
+  <a href="C++学习/C++进阶带目录.html#15">四、C++继承</a><br />
+   <a href="C++学习/C++进阶带目录.html#16">1、基类&amp;派生类</a><br />
+   <a href="C++学习/C++进阶带目录.html#17">2、访问控制和继承</a><br />
+   <a href="C++学习/C++进阶带目录.html#18">3、多继承</a><br />
+  <a href="C++学习/C++进阶带目录.html#19">五、C++重载运算符和重载函数</a><br />
+   <a href="C++学习/C++进阶带目录.html#20">1、函数的重载</a><br />
+   <a href="C++学习/C++进阶带目录.html#21">2、运算符重载</a><br />
+  <a href="C++学习/C++进阶带目录.html#22">六、重载运算符实例</a><br />
+   <a href="C++学习/C++进阶带目录.html#23"><strong>1、一元运算符重载</strong>（也就是只有一个数字参与运算的情况）</a><br />
+   <a href="C++学习/C++进阶带目录.html#24">2、二元运算符重载</a><br />
+   <a href="C++学习/C++进阶带目录.html#25">3、关系运算符重载</a><br />
+   <a href="C++学习/C++进阶带目录.html#26">4、输入/输出运算符重载</a><br />
+   <a href="C++学习/C++进阶带目录.html#27">4、赋值运算符重载</a><br />
+   <a href="C++学习/C++进阶带目录.html#28">5、函数调用运算符 () 重载</a><br />
+  <a href="C++学习/C++进阶带目录.html#29">七、C++类的多态</a></p>
 <h1 id="a-name0c-类--对象aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name0c-类--对象aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="0">C++ 类 &amp; 对象</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h1>
 <p>C++ 在 C 语言的基础上增加了面向对象编程，C++ 支持面向对象程序设计。类是 C++ 的核心特性，通常被称为用户定义的类型。</p>
 <p>类用于指定对象的形式，它包含了数据表示法和用于处理数据的方法。类中的数据和方法称为类的成员。函数在一个类被称为类的成员。</p>
@@ -6313,6 +6328,916 @@ Final Stage Count: 2
 </code></pre>
 </li>
 </ul>
+<h3 id="a-name15四c继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name15四c继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="15">四、C++继承</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h3>
+<p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类，这使得创建和维护一个应用程序变得更容易。这样做，也达到了重用代码功能和提高执行时间的效果</p>
+<p>当创建一个类时，您不需要重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
+<h4 id="a-name161基类派生类aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name161基类派生类aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="16">1、基类&amp;派生类</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>一个类可以派生自多个类，这意味着，它可以从多个基类继承数据和函数。定义一个派生类，我们使用一个类派生列表来指定基类。类派生列表以一个或多个基类命名，形式如下：</p>
+<pre><code class="language-C++">class derived-class: access-specifier base-class
+</code></pre>
+<p>其中，访问修饰符 access-specifier 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，base-class 是之前定义过的某个类的名称。如果未使用访问修饰符 access-specifier，则默认为 private。</p>
+<p>假设有一个基类 <strong>Shape</strong>，<strong>Rectangle</strong> 是它的派生类，如下所示：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+ 
+using namespace std;
+
+// 基类
+class Shape 
+{
+   public:
+      void setWidth(int w)
+      {
+         width = w;
+      }
+      void setHeight(int h)
+      {
+         height = h;
+      }
+   protected:
+      int width;
+      int height;
+};
+
+// 派生类
+class Rectangle: public Shape
+{
+   public:
+      int getArea()
+      { 
+         return (width * height); 
+      }
+};
+
+int main(void)
+{
+   Rectangle Rect;
+ 
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+
+   // 输出对象的面积
+   cout &lt;&lt; &quot;Total area: &quot; &lt;&lt; Rect.getArea() &lt;&lt; endl;
+
+   return 0;
+} 
+//输出结果
+Total area: 35
+</code></pre>
+<h4 id="a-name172访问控制和继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name172访问控制和继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="17">2、访问控制和继承</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>派生类可以访问基类中所有的非私有成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。</p>
+<p>我们可以根据访问权限总结出不同的访问类型，如下所示：</p>
+<table><thead><tr><th align="left">访问</th><th align="left">public</th><th align="left">protected</th><th align="left">private</th></tr></thead><tbody>
+<tr><td align="left">同一个类</td><td align="left">yes</td><td align="left">yes</td><td align="left">yes</td></tr>
+<tr><td align="left">派生类</td><td align="left">yes</td><td align="left">yes</td><td align="left">no</td></tr>
+<tr><td align="left">外部的类</td><td align="left">yes</td><td align="left">no</td><td align="left">no</td></tr>
+</tbody></table>
+<p>当一个类派生自基类，该基类可以被继承为 <strong>public、protected</strong> 或 <strong>private</strong> 几种类型。继承类型是通过上面讲解的访问修饰符 access-specifier 来指定的。</p>
+<p>我们几乎不使用 <strong>protected</strong> 或 <strong>private</strong> 继承，通常使用 <strong>public</strong> 继承。当使用不同类型的继承时，遵循以下几个规则：</p>
+<ul>
+<li><strong>公有继承（public）：<strong>当一个类派生自</strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li>
+<li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li>
+<li><strong>私有继承（private）：<strong>当一个类派生自</strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li>
+</ul>
+<blockquote>
+<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>基类的构造函数、析构函数和拷贝构造函数。</li>
+<li>基类的重载运算符。</li>
+<li>基类的友元函数。</li>
+</ul>
+</blockquote>
+<h4 id="a-name183多继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name183多继承aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="18">3、多继承</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>多继承即一个子类可以有多个父类，它继承了多个父类的特性。</p>
+<p>C++ 类可以从多个类继承成员，语法如下：</p>
+<pre><code>class &lt;派生类名&gt;: &lt;继承方式1&gt; &lt;基类名1&gt;, &lt;继承方式2&gt; &lt;基类名2&gt;
+{
+……
+}；
+</code></pre>
+<p>其中，访问修饰符 access 是 <strong>public、protected</strong> 或 <strong>private</strong> 其中的一个，用来修饰每个基类，各个基类之间用逗号分隔，如上所示。现在让我们一起看看下面的实例：</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+ 
+using namespace std;
+
+// 基类 Shape
+class Shape 
+{
+   public:
+      void setWidth(int w)
+      {
+         width = w;
+      }
+      void setHeight(int h)
+      {
+         height = h;
+      }
+   protected:
+      int width;
+      int height;
+};
+
+// 基类 PaintCost
+class PaintCost 
+{
+   public:
+      int getCost(int area)
+      {
+         return area * 70;
+      }
+};
+
+// 派生类
+class Rectangle: public Shape, public PaintCost
+{
+   public:
+      int getArea()
+      { 
+         return (width * height); 
+      }
+};
+
+int main(void)
+{
+   Rectangle Rect;
+   int area;
+ 
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+
+   area = Rect.getArea();
+   
+   // 输出对象的面积
+   cout &lt;&lt; &quot;Total area: &quot; &lt;&lt; Rect.getArea() &lt;&lt; endl;
+
+   // 输出总花费
+   cout &lt;&lt; &quot;Total paint cost: $&quot; &lt;&lt; Rect.getCost(area) &lt;&lt; endl;
+
+   return 0;
+}
+</code></pre>
+<h3 id="a-name19五c重载运算符和重载函数aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name19五c重载运算符和重载函数aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="19">五、C++重载运算符和重载函数</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h3>
+<p>==C++ 允许在同一作用域中的某个<strong>函数</strong>和<strong>运算符</strong>指定多个定义==，分别称为<strong>函数重载</strong>和<strong>运算符重载</strong>。</p>
+<p>==重载声明是指一个与之前已经在该作用域内声明过的函数或方法具有相同名称的声明，但是它们的参数列表和定义（实现）不相同。==</p>
+<p>当您调用一个<strong>重载函数</strong>或<strong>重载运算符</strong>时，编译器通过把您所使用的参数类型与定义中的参数类型进行比较，决定选用最合适的定义。选择最合适的重载函数或重载运算符的过程，称为<strong>重载决策</strong>。</p>
+<h4 id="a-name201函数的重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name201函数的重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="20">1、函数的重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>在同一个作用域内，可以声明几个功能类似的同名函数，但是这些同名函数的形式参数（指参数的个数、类型或者顺序）必须不同。您不能仅通过返回类型的不同来重载函数。</p>
+<p>下面的实例中，同名函数 <strong>print()</strong> 被用于输出不同的数据类型：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class printData 
+{
+   public:
+      void print(int i) {
+        cout &lt;&lt; &quot;Printing int: &quot; &lt;&lt; i &lt;&lt; endl;
+      }
+
+      void print(double  f) {
+        cout &lt;&lt; &quot;Printing float: &quot; &lt;&lt; f &lt;&lt; endl;
+      }
+
+      void print(char* c) {
+        cout &lt;&lt; &quot;Printing character: &quot; &lt;&lt; c &lt;&lt; endl;
+      }
+};
+
+int main(void)
+{
+   printData pd;
+ 
+   // Call print to print integer
+   pd.print(5);
+   // Call print to print float
+   pd.print(500.263);
+   // Call print to print character
+   pd.print(&quot;Hello C++&quot;);
+ 
+   return 0;
+}
+//输出结果 ：就是定义了一堆重名函数，但是他们的输入是不一样的，再以此来区分他们之间的区别
+Printing int: 5
+Printing float: 500.263
+Printing character: Hello C++
+</code></pre>
+<h4 id="a-name212运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name212运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="21">2、运算符重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p><strong>重载的运算符是带有特殊名称的函数</strong>，函数名是由关键字 operator 和其后要重载的运算符符号构成的。与其他函数一样，重载运算符有一个返回类型和一个参数列表。</p>
+<pre><code class="language-cpp">//作为成员函数时的定义方法
+Box operator+(const Box&amp;);
+</code></pre>
+<p>==声明加法运算符用于把两个 Box 对象相加，返回最终的 Box 对象。大多数的重载运算符可被定义为普通的非成员函数或者被定义为类成员函数。如果我们定义上面的函数为类的非成员函数，那么我们需要为每次操作传递两个参数，如下所示==：</p>
+<p>补充:⁉️: <strong>区分类的成员函数与类的非成员函数</strong> 举一个例子🌰：</p>
+<pre><code class="language-cpp">////////////原始的类//////////////
+class People{
+        public:
+            ...
+            void Getup( );
+            void Washing( );
+            void eating( );
+            ...
+        }
+////////////成员函数//////////////
+class People
+{
+  			public:
+  			……
+          void morningAction(){ //在这里，morningAction函数也就是成员函数
+          	void Getup( );
+            void Washing( );
+            void eating( );  
+        }
+        		
+}
+////////////非成员函数//////////////
+void moringAction(People&amp; p)//在这里，将函数定义在类的外部，将类作为输入参数并操作类中的函数及变量的方法，此时这个函数被称作非成员函数
+        {
+                p.Getup( );
+                p.Washing( );
+                p.eating( );
+        }
+</code></pre>
+<p>如果我们定义上面的函数为类的非成员函数，那么我们需要为每次操作传递两个参数，如下所示：</p>
+<pre><code class="language-cpp">//作为非成员函数时定义重载符的语句
+Box operator+(const Box&amp;, const Box&amp;);
+</code></pre>
+<p>下面的实例使用成员函数演示了运算符重载的概念。在这里，对象作为参数进行传递，对象的属性使用 <strong>this</strong> 运算符进行访问，</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Box
+{
+   public:
+
+      double getVolume(void)
+      {
+         return length * breadth * height;
+      }
+      void setLength( double len )
+      {
+          length = len;
+      }
+
+      void setBreadth( double bre )
+      {
+          breadth = bre;
+      }
+
+      void setHeight( double hei )
+      {
+          height = hei;
+      }
+      // 重载 + 运算符，用于把两个 Box 对象相加
+      Box operator+(const Box&amp; b) //相当于检测到有BOX类跟+连用时，就会自动重载
+      {
+         Box box;
+         box.length = this-&gt;length + b.length;
+         box.breadth = this-&gt;breadth + b.breadth;
+         box.height = this-&gt;height + b.height;
+         return box;
+      }
+   private:
+      double length;      // 长度
+      double breadth;     // 宽度
+      double height;      // 高度
+};
+// 程序的主函数
+int main( )
+{
+   Box Box1;                // 声明 Box1，类型为 Box
+   Box Box2;                // 声明 Box2，类型为 Box
+   Box Box3;                // 声明 Box3，类型为 Box
+   double volume = 0.0;     // 把体积存储在该变量中
+ 
+   // Box1 详述
+   Box1.setLength(6.0); 
+   Box1.setBreadth(7.0); 
+   Box1.setHeight(5.0);
+ 
+   // Box2 详述
+   Box2.setLength(12.0); 
+   Box2.setBreadth(13.0); 
+   Box2.setHeight(10.0);
+ 
+   // Box1 的体积
+   volume = Box1.getVolume();
+   cout &lt;&lt; &quot;Volume of Box1 : &quot; &lt;&lt; volume &lt;&lt;endl;
+ 
+   // Box2 的体积
+   volume = Box2.getVolume();
+   cout &lt;&lt; &quot;Volume of Box2 : &quot; &lt;&lt; volume &lt;&lt;endl;
+
+   // 把两个对象相加，得到 Box3
+   Box3 = Box1 + Box2; //此处自动重载加号运算符
+
+   // Box3 的体积
+   volume = Box3.getVolume();
+   cout &lt;&lt; &quot;Volume of Box3 : &quot; &lt;&lt; volume &lt;&lt;endl;
+
+   return 0;
+}
+//输出结果
+Volume of Box1 : 210
+Volume of Box2 : 1560
+Volume of Box3 : 5400
+</code></pre>
+<p>下面是可重载的运算符列表：</p>
+<table><thead><tr><th>+</th><th>-</th><th>*</th><th>/</th><th>%</th><th>^</th></tr></thead><tbody>
+<tr><td>&amp;</td><td>|</td><td>~</td><td>!</td><td>,</td><td>=</td></tr>
+<tr><td>&lt;</td><td>&gt;</td><td>&lt;=</td><td>&gt;=</td><td>++</td><td>--</td></tr>
+<tr><td>&lt;&lt;</td><td>&gt;&gt;</td><td>==</td><td>!=</td><td>&amp;&amp;</td><td>||</td></tr>
+<tr><td>+=</td><td>-=</td><td>/=</td><td>%=</td><td>^=</td><td>&amp;=</td></tr>
+<tr><td>|=</td><td>*=</td><td>&lt;&lt;=</td><td>&gt;&gt;=</td><td>[]</td><td>()</td></tr>
+<tr><td>-&gt;</td><td>-&gt;*</td><td>new</td><td>new []</td><td>delete</td><td>delete []</td></tr>
+</tbody></table>
+<p>下面是不可重载的运算符列表：</p>
+<table><thead><tr><th>::</th><th>.*</th><th>.</th><th>?:</th></tr></thead><tbody>
+</tbody></table>
+<h3 id="a-name22六重载运算符实例aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name22六重载运算符实例aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="22">六、重载运算符实例</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h3>
+<h4 id="a-name231一元运算符重载也就是只有一个数字参与运算的情况aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name231一元运算符重载也就是只有一个数字参与运算的情况aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="23"><strong>1、一元运算符重载</strong>（也就是只有一个数字参与运算的情况）</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>一元运算符只对一个操作数进行操作，下面是一元运算符的实例：</p>
+<ul>
+<li><a href="https://www.w3cschool.cn/cpp/increment-decrement-operators-overloading.html">递增运算符（ ++ ）和递减运算符（ -- ）</a></li>
+<li>一元减运算符，即负号（ - ）</li>
+<li>逻辑非运算符（ ! ）</li>
+</ul>
+<p>一元运算符通常出现在它们所操作的对象的左边，比如 !obj、-obj 和 ++obj，但有时它们也可以作为后缀，比如 obj++ 或 obj--。</p>
+<p>例子1：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Distance
+{
+   private:
+      int feet;             // 0 到无穷
+      int inches;           // 0 到 12
+   public:
+      // 所需的构造函数
+      Distance(){
+         feet = 0;
+         inches = 0;
+      }
+      Distance(int f, int i){
+         feet = f;
+         inches = i;
+      }
+      // 显示距离的方法
+      void displayDistance()
+      {
+         cout &lt;&lt; &quot;F: &quot; &lt;&lt; feet &lt;&lt; &quot; I:&quot; &lt;&lt; inches &lt;&lt;endl;
+      }
+      // 重载负运算符（ - ）
+      Distance operator- ()//因为这里是前缀一元运算符，不用其他参数，所以这里的参数输入位置可以是空的
+      {
+         feet = -feet;
+         inches = -inches;
+         return Distance(feet, inches);//构造函数
+      }
+};
+int main()
+{
+   Distance D1(11, 10), D2(-5, 11);
+ 
+   -D1;                     // 取相反数
+   D1.displayDistance();    // 距离 D1
+
+   -D2;                     // 取相反数
+   D2.displayDistance();    // 距离 D2
+
+   return 0;
+}
+//返回结果
+F: -11 I:-10
+F: 5 I:-11
+</code></pre>
+<p>例子2：⭐️很重要，区分运算符是前缀还是后缀的</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Time
+{
+   private:
+      int hours;             // 0 到 23
+      int minutes;           // 0 到 59
+   public:
+      // 所需的构造函数
+      Time(){
+         hours = 0;
+         minutes = 0;
+      }
+      Time(int h, int m){
+         hours = h;
+         minutes = m;
+      }
+      // 显示时间的方法
+      void displayTime()
+      {
+         cout &lt;&lt; &quot;H: &quot; &lt;&lt; hours &lt;&lt; &quot; M:&quot; &lt;&lt; minutes &lt;&lt;endl;
+      }
+      // 重载前缀递增运算符（ ++ ）
+      Time operator++ ()  
+      {
+         ++minutes;          // 对象加 1
+         if(minutes &gt;= 60)  
+         {
+            ++hours;
+            minutes -= 60;
+         }
+         return Time(hours, minutes); //这里返回的相当于是构造函数，将对象重新初始化了
+      }
+      // 重载后缀递增运算符（ ++ ）
+      Time operator++( int )         
+      {
+         // 保存原始值
+         Time T(hours, minutes);
+         // 对象加 1
+         ++minutes;                    
+         if(minutes &gt;= 60)
+         {
+            ++hours;
+            minutes -= 60;
+         }
+         // 返回旧的原始值
+         return T; 
+      }
+};
+int main()
+{
+   Time T1(11, 59), T2(10,40);
+ 
+   ++T1;                    // T1 加 1
+   T1.displayTime();        // 显示 T1
+   ++T1;                    // T1 再加 1
+   T1.displayTime();        // 显示 T1
+ 
+   T2++;                    // T2 加 1
+   T2.displayTime();        // 显示 T2
+   T2++;                    // T2 再加 1
+   T2.displayTime();        // 显示 T2
+   return 0;
+}
+//输出结果
+H: 12 M:0
+H: 12 M:1
+H: 10 M:41
+H: 10 M:42
+</code></pre>
+<h4 id="a-name242二元运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name242二元运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="24">2、二元运算符重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>二元运算符需要两个参数，下面是二元运算符的实例。我们平常使用的加运算符（ + ）、减运算符（ - ）、乘运算符（ * ）和除运算符（ / ）都属于二元运算符。就像加(+)运算符。</p>
+<p>下面的实例演示了如何重载加运算符（ + ）。类似地，您也可以尝试重载减运算符（ - ）和除运算符（ / ）。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Box
+{
+   double length;      // 长度
+   double breadth;     // 宽度
+   double height;      // 高度
+public:
+ 
+   double getVolume(void)
+   {
+      return length * breadth * height;
+   }
+   void setLength( double len )
+   {
+       length = len;
+   }
+ 
+   void setBreadth( double bre )
+   {
+       breadth = bre;
+   }
+ 
+   void setHeight( double hei )
+   {
+       height = hei;
+   }
+   // 重载 + 运算符，用于把两个 Box 对象相加
+   Box operator+(const Box&amp; b)
+   {
+      Box box;
+      box.length = this-&gt;length + b.length;
+      box.breadth = this-&gt;breadth + b.breadth;
+      box.height = this-&gt;height + b.height;
+      return box;
+   }
+};
+// 程序的主函数
+int main( )
+{
+   Box Box1;                // 声明 Box1，类型为 Box
+   Box Box2;                // 声明 Box2，类型为 Box
+   Box Box3;                // 声明 Box3，类型为 Box
+   double volume = 0.0;     // 把体积存储在该变量中
+ 
+   // Box1 详述
+   Box1.setLength(6.0); 
+   Box1.setBreadth(7.0); 
+   Box1.setHeight(5.0);
+ 
+   // Box2 详述
+   Box2.setLength(12.0); 
+   Box2.setBreadth(13.0); 
+   Box2.setHeight(10.0);
+ 
+   // Box1 的体积
+   volume = Box1.getVolume();
+   cout &lt;&lt; &quot;Volume of Box1 : &quot; &lt;&lt; volume &lt;&lt;endl;
+ 
+   // Box2 的体积
+   volume = Box2.getVolume();
+   cout &lt;&lt; &quot;Volume of Box2 : &quot; &lt;&lt; volume &lt;&lt;endl;
+ 
+   // 把两个对象相加，得到 Box3
+   Box3 = Box1 + Box2;
+ 
+   // Box3 的体积
+   volume = Box3.getVolume();
+   cout &lt;&lt; &quot;Volume of Box3 : &quot; &lt;&lt; volume &lt;&lt;endl;
+ 
+   return 0;
+}
+//输出结果
+Volume of Box1 : 210
+Volume of Box2 : 1560
+Volume of Box3 : 5400
+</code></pre>
+<h4 id="a-name253关系运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name253关系运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="25">3、关系运算符重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>C++ 语言支持各种关系运算符（ &lt; 、 &gt; 、 &lt;= 、 &gt;= 、 == 等等），它们可用于比较 C++ 内置的数据类型。</p>
+<p>您可以重载任何一个关系运算符，重载后的关系运算符可用于比较类的对象。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Distance
+{
+   private:
+      int feet;             // 0 到无穷
+      int inches;           // 0 到 12
+   public:
+      // 所需的构造函数
+      Distance(){
+         feet = 0;
+         inches = 0;
+      }
+      Distance(int f, int i){
+         feet = f;
+         inches = i;
+      }
+      // 显示距离的方法
+      void displayDistance()
+      {
+         cout &lt;&lt; &quot;F: &quot; &lt;&lt; feet &lt;&lt; &quot; I:&quot; &lt;&lt; inches &lt;&lt;endl;
+      }
+      // 重载负运算符（ - ）//一元运算符
+      Distance operator- ()  
+      {
+         feet = -feet;
+         inches = -inches;
+         return Distance(feet, inches);
+      }
+      // 重载小于运算符（ &lt; ）
+      bool operator &lt;(const Distance&amp; d) //这里用的时布尔值
+      {
+         if(feet &lt; d.feet)
+         {
+            return true;
+         }
+         if(feet == d.feet &amp;&amp; inches &lt; d.inches)
+         {
+            return true;
+         }
+         return false;
+        //只会返回一个return 也就是就没走到上面两个return时默认返回false
+      }
+};
+int main()
+{
+   Distance D1(11, 10), D2(5, 11);
+ 
+   if( D1 &lt; D2 )
+   {
+      cout &lt;&lt; &quot;D1 is less than D2 &quot; &lt;&lt; endl;
+   }
+   else
+   {
+      cout &lt;&lt; &quot;D2 is less than D1 &quot; &lt;&lt; endl;
+   }
+   return 0;
+}
+//输出结果
+D2 is less than D1
+</code></pre>
+<h4 id="a-name264输入输出运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name264输入输出运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="26">4、输入/输出运算符重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>C++ 能够使用流提取运算符 &gt;&gt; 和流插入运算符 &lt;&lt; 来输入和输出内置的数据类型。您可以重载流提取运算符和流插入运算符来操作对象等用户自定义的数据类型。</p>
+<p>在这里，有一点很重要，我们需要把运算符重载函数声明为类的友元函数，这样我们就能不用创建对象而直接调用函数。</p>
+<p><strong>重载输入运算符&gt;&gt;</strong></p>
+<p>下面我们以全局函数的形式重载<code>&gt;&gt;</code>，使它能够读入两个 double 类型的数据，并分别赋值给复数的实部和虚部：</p>
+<pre><code class="language-cpp">istream &amp; operator&gt;&gt;(istream &amp;in, complex &amp;A){
+    in &gt;&gt; A.m_real &gt;&gt; A.m_imag;
+    return in;
+}
+</code></pre>
+<p>istream 表示输入流，cin 是 istream 类的对象，只不过这个对象是在标准库中定义的。之所以返回 istream 类对象的引用，是为了能够连续读取复数，让代码书写更加漂亮，例如：</p>
+<pre><code class="language-cpp">complex c1, c2;cin&gt;&gt;c1&gt;&gt;c2;
+</code></pre>
+<p>如果不返回引用，那就只能一个一个地读取了：</p>
+<pre><code class="language-cpp">complex c1, c2;cin&gt;&gt;c1;cin&gt;&gt;c2;
+</code></pre>
+<p>另外，运算符重载函数中用到了 complex 类的 private 成员变量，必须在 complex 类中将该函数声明为友元函数：</p>
+<pre><code class="language-cpp">friend istream &amp; operator&gt;&gt;(istream &amp; in , complex &amp;a);
+</code></pre>
+<p><code>&gt;&gt;</code>运算符可以按照下面的方式使用：</p>
+<pre><code class="language-cpp">complex c;
+cin&gt;&gt;c;
+</code></pre>
+<p>当输入<code>1.45 2.34</code>后，这两个小数就分别成为对象 c 的实部和虚部了。<code>cin&gt;&gt; c;</code>这一语句其实可以理解为：</p>
+<pre><code class="language-cpp">operator &gt;&gt; (cin, c3)
+</code></pre>
+<p>调用函数时，形参in成为cin的引用，形参A成为c3的引用，因此调用函数的过程变为：</p>
+<pre><code class="language-cpp">cin &gt;&gt; c3.m_real &gt;&gt; c3.m_imag; return cin
+</code></pre>
+<p><strong>重载输出运算符 &lt;&lt;</strong></p>
+<p>同样地，我们也可以模仿上面的形式对输出运算符<code>&gt;&gt;</code>进行重载，让它能够输出复数，请看下面的代码：</p>
+<pre><code class="language-cpp">ostream &amp; operator&lt;&lt;(ostream &amp;out, complex &amp;A){
+    out &lt;&lt; A.m_real &lt;&lt;&quot; + &quot;&lt;&lt; A.m_imag &lt;&lt;&quot; i &quot;;
+    return out;
+}
+</code></pre>
+<p>ostream 表示输出流，cout 是 ostream 类的对象。由于采用了引用的方式进行参数传递，并且也返回了对象的引用，所以重载后的运算符可以实现连续输出。
+为了能够直接访问 complex 类的 private 成员变量，同样需要将该函数声明为 complex 类的友元函数：（只有静态函数才能不经创建直接访问）</p>
+<pre><code class="language-cpp">friend ostream &amp; operator&lt;&lt;(ostream &amp;out, complex &amp;A);
+</code></pre>
+<p>一个例子🌰：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Distance
+{
+   private:
+      int feet;             // 0 到无穷
+      int inches;           // 0 到 12
+   public:
+      // 所需的构造函数
+      Distance(){
+         feet = 0;
+         inches = 0;
+      }
+      Distance(int f, int i){
+         feet = f;
+         inches = i;
+      }
+      friend ostream &amp;operator&lt;&lt;( ostream &amp;output, 
+                                       const Distance &amp;D )
+      { 
+         output &lt;&lt; &quot;F : &quot; &lt;&lt; D.feet &lt;&lt; &quot; I : &quot; &lt;&lt; D.inches;
+         return output;            
+      }
+
+      friend istream &amp;operator&gt;&gt;( istream  &amp;input, Distance &amp;D )
+      { 
+         input &gt;&gt; D.feet &gt;&gt; D.inches;
+         return input;            
+      }
+};
+int main()
+{
+   Distance D1(11, 10), D2(5, 11), D3;
+
+   cout &lt;&lt; &quot;Enter the value of object : &quot; &lt;&lt; endl;
+   cin &gt;&gt; D3;
+   cout &lt;&lt; &quot;First Distance : &quot; &lt;&lt; D1 &lt;&lt; endl;
+   cout &lt;&lt; &quot;Second Distance :&quot; &lt;&lt; D2 &lt;&lt; endl;
+   cout &lt;&lt; &quot;Third Distance :&quot; &lt;&lt; D3 &lt;&lt; endl;
+
+
+   return 0;
+}
+//输出结果
+$./a.out
+Enter the value of object :
+70
+10
+First Distance : F : 11 I : 10
+Second Distance :F : 5 I : 11
+Third Distance :F : 70 I : 10
+</code></pre>
+<h4 id="a-name274赋值运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name274赋值运算符重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="27">4、赋值运算符重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>就像其他运算符一样，您可以重载赋值运算符（ = ），用于创建一个对象，比如拷贝构造函数。</p>
+<p>下面的实例演示了如何重载赋值运算符。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Distance
+{
+   private:
+      int feet;             // 0 到无穷
+      int inches;           // 0 到 12
+   public:
+      // 所需的构造函数
+      Distance(){
+         feet = 0;
+         inches = 0;
+      }
+      Distance(int f, int i){
+         feet = f;
+         inches = i;
+      }
+      void operator=(const Distance &amp;D )
+      { 
+         feet = D.feet;
+         inches = D.inches;
+      }
+      // 显示距离的方法
+      void displayDistance()
+      {
+         cout &lt;&lt; &quot;F: &quot; &lt;&lt; feet &lt;&lt;  &quot; I:&quot; &lt;&lt;  inches &lt;&lt; endl;
+      }
+      
+};
+int main()
+{
+   Distance D1(11, 10), D2(5, 11);
+
+   cout &lt;&lt; &quot;First Distance : &quot;; 
+   D1.displayDistance();
+   cout &lt;&lt; &quot;Second Distance :&quot;; 
+   D2.displayDistance();
+
+   // 使用赋值运算符
+   D1 = D2;
+   cout &lt;&lt; &quot;First Distance :&quot;; 
+   D1.displayDistance();
+
+   return 0;
+}
+//输出结果
+First Distance : F: 11 I:10
+Second Distance :F: 5 I:11
+First Distance :F: 5 I:11
+</code></pre>
+<h4 id="a-name285函数调用运算符--重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name285函数调用运算符--重载aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="28">5、函数调用运算符 () 重载</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h4>
+<p>函数调用运算符 () 可以被重载用于类的对象。当重载 () 时，您不是创造了一种新的调用函数的方式，相反地，这是创建一个可以传递任意数目参数的运算符函数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+class Distance
+{
+   private:
+      int feet;             // 0 到无穷
+      int inches;           // 0 到 12
+   public:
+      // 所需的构造函数
+      Distance(){
+         feet = 0;
+         inches = 0;
+      }
+      Distance(int f, int i){
+         feet = f;
+         inches = i;
+      }
+      // 重载函数调用运算符
+      Distance operator()(int a, int b, int c)
+      {
+         Distance D;
+         // 进行随机计算
+         D.feet = a + c + 10;
+         D.inches = b + c + 100 ;
+         return D;
+      }
+      // 显示距离的方法
+      void displayDistance()
+      {
+         cout &lt;&lt; &quot;F: &quot; &lt;&lt; feet &lt;&lt;  &quot; I:&quot; &lt;&lt;  inches &lt;&lt; endl;
+      }
+      
+};
+int main()
+{
+   Distance D1(11, 10), D2;
+
+   cout &lt;&lt; &quot;First Distance : &quot;; 
+   D1.displayDistance();
+
+   D2 = D1(10, 10, 10); // invoke operator()只要检测到（）内变为三个了，证明就激发了这个重载，就会进行内部定义的运算。
+   cout &lt;&lt; &quot;Second Distance :&quot;; 
+   D2.displayDistance();
+
+   return 0;
+}
+//输出结果
+First Distance : F: 11 I:10
+Second Distance :F: 30 I:120
+</code></pre>
+<h3 id="a-name29七c类的多态aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a class="header" href="#a-name29七c类的多态aa-stylefloatrighttext-decorationnone-hrefc学习c进阶带目录htmlindextopa"><a name="29">七、C++类的多态</a><a style="float:right;text-decoration:none;" href="C++学习/C++进阶带目录.html#index">[Top]</a></a></h3>
+<p><strong>多态</strong>按字面的意思就是多种形态。当类之间存在层次结构，并且类之间是通过继承关联时，就会用到多态。</p>
+<p>C++ 多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt; 
+using namespace std;
+ 
+class Shape {
+   protected:
+      int width, height;
+   public:
+      Shape( int a=0, int b=0)
+      {
+         width = a;
+         height = b;
+      }
+      int area()
+      {
+         cout &lt;&lt; &quot;Parent class area :&quot; &lt;&lt;endl;
+         return 0;
+      }
+};
+class Rectangle: public Shape{
+   public:
+      Rectangle( int a=0, int b=0):Shape(a, b) { }
+      int area ()
+      { 
+         cout &lt;&lt; &quot;Rectangle class area :&quot; &lt;&lt;endl;
+         return (width * height); 
+      }
+};
+class Triangle: public Shape{
+   public:
+      Triangle( int a=0, int b=0):Shape(a, b) { }
+      int area ()
+      { 
+         cout &lt;&lt; &quot;Triangle class area :&quot; &lt;&lt;endl;
+         return (width * height / 2); 
+      }
+};
+// 程序的主函数
+int main( )
+{
+   Shape *shape;
+   Rectangle rec(10,7);
+   Triangle  tri(10,5);
+
+   // 存储矩形的地址
+   shape = &amp;rec;
+   // 调用矩形的求面积函数 area
+   shape-&gt;area();
+
+   // 存储三角形的地址
+   shape = &amp;tri;
+   // 调用三角形的求面积函数 area
+   shape-&gt;area();
+   
+   return 0;
+}
+//输出结果
+Parent class area
+Parent class area
+❌：不对啊，我希望输出的结果是两个的子类的，但是这里只有父类area函数的调用
+</code></pre>
+<blockquote>
+<p>导致错误输出的原因是，调用函数 area() 被编译器设置为基类中的版本，这就是所谓的<strong>静态多态</strong>，或<strong>静态链接</strong> - 函数调用在程序执行前就准备好了。有时候这也被称为<strong>早绑定</strong>，因为 area() 函数在程序编译期间就已经设置好了。</p>
+</blockquote>
+<p>为了克服上述问题，我直接在父类定义的需要被重写的函数之前佳哥virtual，然后后续编译器在运行的时候就会自动使用子类中的定义方法。</p>
+<pre><code class="language-cpp">class Shape {
+   protected:
+      int width, height;
+   public:
+      Shape( int a=0, int b=0)
+      {
+         width = a;
+         height = b;
+      }
+      virtual int area()
+      {
+         cout &lt;&lt; &quot;Parent class area :&quot; &lt;&lt;endl;
+         return 0;
+      }
+};
+//输出结果
+//Rectangle class area
+//Triangle class area
+</code></pre>
+<p>此时，编译器看的是指针的内容，而不是它的类型。因此，由于 tri 和 rec 类的对象的地址存储在 *shape 中，所以会调用各自的 area() 函数。</p>
+<p>正如您所看到的，每个子类都有一个函数 area() 的独立实现。这就是<strong>多态</strong>的一般使用方式。有了多态，您可以有多个不同的类，都带有同一个名称但具有不同实现的函数，函数的参数甚至可以是相同的</p>
+<blockquote>
+<p>❌：在这里，这个带有virtual定义的函数就叫做虚函数</p>
+</blockquote>
+<p><strong>虚函数</strong> 是在基类中使用关键字 <strong>virtual</strong> 声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。</p>
+<p>==我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为<strong>动态链接</strong>，或<strong>后期绑定==</strong>。</p>
+<p><strong>纯虚函数</strong></p>
+<p>您可能想要在基类中定义虚函数，以便在派生类中重新定义该函数更好地适用于对象，但是您在基类中又不能对虚函数给出有意义的实现，这个时候就会用到纯虚函数。</p>
+<p>我们可以把基类中的虚函数 area() 改写如下：</p>
+<pre><code class="language-cpp">class Shape {
+   protected:
+      int width, height;
+   public:
+      Shape( int a=0, int b=0)
+      {
+         width = a;
+         height = b;
+      }
+      // pure virtual function
+      virtual int area() = 0; //在这里，也就是不定义函数内容，直接给他赋值成0
+};
+</code></pre>
 
                     </main>
 
