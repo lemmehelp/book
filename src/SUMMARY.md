@@ -14,5 +14,4 @@
 
 ​	2、[C++进阶](./C++学习/C++进阶带目录.md)
 
-​	3、[C++进阶](./C++学习/bitvijay-IntelligenceGathering.md.md)
-
+​	​	3、[C++进阶](./C++学习/bitvijay-IntelligenceGathering.md)
